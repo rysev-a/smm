@@ -1,0 +1,27 @@
+import os
+import click
+from app import create_app
+from app.core.database import db
+from app.users.cli import user_cli, role_cli
+
+app = create_app(os.environ.get(
+    'SETTINGS_ENV',
+    'app.settings.development'
+))
+
+app.cli.add_command(user_cli)
+app.cli.add_command(role_cli)
+
+
+@app.cli.command()
+def clear():
+    db.drop_all()
+    db.create_all()
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return dict(
+        app=app,
+        db=db,
+    )

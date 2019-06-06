@@ -1,0 +1,43 @@
+{
+  "name": "smm",
+  "version": "0.0.1",
+  "description": "SMM-service frontend",
+  "main": "fusebox.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bulma": "^0.7.2",
+    "classnames": "^2.2.6",
+    "ramda": "^0.26.1",
+    "inferno": "^7.1.9",
+    "inferno-mobx": "^7.1.11",
+    "inferno-router": "^7.1.11",
+    "mobx": "^5.9.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/history": "^4.7.2",
+    "@types/mocha": "^5.2.5",
+    "@types/ramda": "^0.26.6",
+    "chai": "^4.2.0",
+    "cypress": "^3.1.5",
+    "fuse-box": "^3.6.0",
+    "http-proxy-middleware": "^0.19.1",
+    "mocha": "^5.2.0",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.2",
+    "tsconfig-paths": "^3.7.0",
+    "typescript": "^3.1.6",
+    "ts-transform-classcat": "^0.1.0",
+    "ts-transform-inferno": "^4.0.2"
+  },
+  "scripts": {
+    "start": "node fuse.js",
+    "test": "export TS_NODE_PROJECT='./src/tsconfig.json'; mocha -r ts-node/register -r tsconfig-paths/register src/**/*.test.ts"
+  },
+  "keywords": [
+    "smm",
+    "marketing"
+  ],
+  "author": "Rysev Alexey",
+  "license": "ISC"
+}
