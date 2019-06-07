@@ -9,3 +9,5 @@
 /frontend/dist
 /frontend/docs
 **/.DS_Store
+
+/testing/node_modules

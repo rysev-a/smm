@@ -3,5 +3,17 @@ import { BrowserRouter, Route } from 'inferno-router';
 
 import 'bulma/css/bulma.min.css';
 
-const container = document.getElementById('app');
-inferno.render(<h1>SMM manager</h1>, container);
+import Home from './Home';
+import Navigation from './navigation';
+import SignUpPage from './pages/SignUpPage';
+
+inferno.render(
+  <BrowserRouter>
+    <main>
+      <Navigation />
+      <Route path="/" exact component={Home} />
+      <Route path="/signup" component={SignUpPage} />
+    </main>
+  </BrowserRouter>,
+  document.getElementById('app')
+);

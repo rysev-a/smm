@@ -2,7 +2,7 @@ import os
 import click
 from app import create_app
 from app.core.database import db
-from app.users.cli import user_cli, role_cli
+from app.modules.users.cli import user_cli, role_cli
 
 app = create_app(os.environ.get(
     'SETTINGS_ENV',

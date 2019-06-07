@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "../node_modules",
+    "target": "ES6",
+    "lib": ["es2017", "dom"],
+    "types": ["cypress", "yamljs"]
+  },
+  "include": ["**/*.ts"]
+}

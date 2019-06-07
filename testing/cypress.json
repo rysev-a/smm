@@ -1,0 +1,6 @@
+{
+  "viewportWidth": 1200,
+  "viewportHeight": 660,
+  "baseUrl": "http://localhost:4444",
+  "supportFile": "cypress/support/index.ts"
+}

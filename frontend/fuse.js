@@ -5,7 +5,6 @@ const {
   ImageBase64Plugin,
 } = require('fuse-box');
 
-const TsTransformClasscat = require('ts-transform-classcat').default;
 const TsTransformInferno = require('ts-transform-inferno').default;
 
 const fuse = FuseBox.init({
@@ -21,7 +20,7 @@ const fuse = FuseBox.init({
     ImageBase64Plugin(),
   ],
   transformers: {
-    before: [TsTransformClasscat(), TsTransformInferno()],
+    before: [TsTransformInferno()],
   },
 });
 
