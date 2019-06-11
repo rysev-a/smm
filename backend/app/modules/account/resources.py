@@ -41,12 +41,12 @@ class AccountSignin(Resource):
         user = User.query.filter_by(email=email).first()
         if not user:
             return {
-                'message': {'email': 'not found'}
+                'message': {'email': 'Почта не найдена'}
             }, 400
 
         if not user.verify_password(password):
             return {
-                'message': {'password': 'wrong password'}
+                'message': {'password': 'Неверный пароль'}
             }, 400
 
         login_user(user)
