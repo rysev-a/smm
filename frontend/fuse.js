@@ -35,7 +35,7 @@ fuse.dev({
 });
 fuse
   .bundle('app')
-  .instructions(' > app/index.tsx')
+  .instructions(' > app/App.tsx')
   .hmr()
   .watch();
 

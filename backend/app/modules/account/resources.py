@@ -18,10 +18,17 @@ class AccountInfo(Resource):
 class AccountSignup(Resource):
     @staticmethod
     def post():
+        exist_user = User.query.filter_by(email=request.json['email']).first()
+        if exist_user:
+            return {'message': {
+                'email': 'Email already exists'
+            }}, 400
+
         user = User(**request.json)
         db.session.add(user)
         db.session.commit()
         login_user(user)
+
         return {'message': 'signup ok'}
 
 

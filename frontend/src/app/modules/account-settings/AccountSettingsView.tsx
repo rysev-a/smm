@@ -1,20 +1,24 @@
-import Processing from 'app/ui/Processing';
 import classNames from 'classnames';
+import Processing from 'app/ui/Processing';
 
-const SignUpVuew = ({
-  errors,
-  handleBlur,
-  handleChange,
-  handleSubmit,
-  isSubmitting,
-}) => (
-  <div className="level">
-    <div className="level-item">
-      <section className="section">
-        <div className="level">
-          <h2 className="is-size-4 is-center level-item">Регистрация</h2>
-        </div>
-        <form className="signin-form" onSubmit={handleSubmit}>
+const AccountSettingsView = ({
+  account: {
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    data,
+    isDisabled,
+  },
+}) => {
+  return (
+    <div className="profile">
+      <h1 className="is-size-1  title has-text-weight-normal title has-text-weight-normal">
+        Профиль
+      </h1>
+      <div className="columns">
+        <form className="signin-form column is-half" onSubmit={handleSubmit}>
           <Processing processing={isSubmitting} />
 
           <div className="field">
@@ -26,7 +30,8 @@ const SignUpVuew = ({
                 })}
                 type="text"
                 name="first_name"
-                onKeyUp={handleChange}
+                onChange={handleChange}
+                defaultValue={data.first_name}
                 onBlur={handleBlur}
               />
               {errors['first_name'] && (
@@ -34,7 +39,6 @@ const SignUpVuew = ({
               )}
             </div>
           </div>
-
           <div className="field">
             <label className="label">Фамилия</label>
             <div className="control">
@@ -44,7 +48,8 @@ const SignUpVuew = ({
                 })}
                 type="text"
                 name="last_name"
-                onKeyUp={handleChange}
+                onChange={handleChange}
+                defaultValue={data.last_name}
                 onBlur={handleBlur}
               />
               {errors['last_name'] && (
@@ -57,12 +62,13 @@ const SignUpVuew = ({
             <label className="label">Email</label>
             <div className="control">
               <input
+                defaultValue={data.email}
                 className={classNames('input', {
                   'is-danger': errors['email'],
                 })}
                 type="email"
                 name="email"
-                onKeyUp={handleChange}
+                onChange={handleChange}
                 onBlur={handleBlur}
               />
               {errors['email'] && (
@@ -70,33 +76,16 @@ const SignUpVuew = ({
               )}
             </div>
           </div>
-
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['password'],
-                })}
-                type="password"
-                name="password"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-                autoComplete=""
-              />
-              {errors['password'] && (
-                <p className="help is-danger">{errors['password']}</p>
-              )}
-            </div>
-          </div>
-
-          <button className="button" type="submit">
-            Отправить
+          <button
+            className="button is-primary"
+            type="submit"
+            disabled={isDisabled}>
+            Сохранить
           </button>
         </form>
-      </section>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default SignUpVuew;
+export default AccountSettingsView;

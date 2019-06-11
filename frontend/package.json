@@ -11,7 +11,8 @@
     "inferno-mobx": "^7.1.11",
     "inferno-router": "^7.1.11",
     "mobx": "^5.9.4",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "typestyle": "^2.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",

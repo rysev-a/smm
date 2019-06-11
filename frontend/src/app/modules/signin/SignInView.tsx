@@ -1,7 +1,7 @@
 import Processing from 'app/ui/Processing';
 import classNames from 'classnames';
 
-const SignUpVuew = ({
+const SignInView = ({
   errors,
   handleBlur,
   handleChange,
@@ -12,46 +12,10 @@ const SignUpVuew = ({
     <div className="level-item">
       <section className="section">
         <div className="level">
-          <h2 className="is-size-4 is-center level-item">Регистрация</h2>
+          <h2 className="is-size-4 is-center level-item">Вход</h2>
         </div>
         <form className="signin-form" onSubmit={handleSubmit}>
           <Processing processing={isSubmitting} />
-
-          <div className="field">
-            <label className="label">Имя</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['first_name'],
-                })}
-                type="text"
-                name="first_name"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['first_name'] && (
-                <p className="help is-danger">{errors['first_name']}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="field">
-            <label className="label">Фамилия</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['last_name'],
-                })}
-                type="text"
-                name="last_name"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['last_name'] && (
-                <p className="help is-danger">{errors['last_name']}</p>
-              )}
-            </div>
-          </div>
 
           <div className="field">
             <label className="label">Email</label>
@@ -91,7 +55,7 @@ const SignUpVuew = ({
           </div>
 
           <button className="button" type="submit">
-            Отправить
+            Войти
           </button>
         </form>
       </section>
@@ -99,4 +63,4 @@ const SignUpVuew = ({
   </div>
 );
 
-export default SignUpVuew;
+export default SignInView;
