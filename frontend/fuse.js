@@ -3,9 +3,11 @@ const {
   WebIndexPlugin,
   CSSPlugin,
   ImageBase64Plugin,
+  QuantumPlugin,
 } = require('fuse-box');
 
 const TsTransformInferno = require('ts-transform-inferno').default;
+const isProduction = process.env.NODE_ENV === 'production';
 
 const fuse = FuseBox.init({
   useTypescriptCompiler: true,
@@ -13,30 +15,35 @@ const fuse = FuseBox.init({
   debug: 'true',
   homeDir: 'src',
   target: 'browser@es6',
-  output: 'dist/$name.js',
+  output: 'build/$name.js',
   plugins: [
     WebIndexPlugin({ template: 'src/assets/index.html' }),
     CSSPlugin(),
     ImageBase64Plugin(),
+    isProduction && QuantumPlugin(),
   ],
   transformers: {
     before: [TsTransformInferno()],
   },
 });
 
-fuse.dev({
-  fallback: 'index.html',
-  proxy: {
-    '/api': {
-      target: 'http://localhost:5000',
-      changeOrigin: true,
+// run dev server
+if (!isProduction) {
+  fuse.dev({
+    fallback: 'index.html',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
     },
-  },
-});
-fuse
-  .bundle('app')
-  .instructions(' > app/App.tsx')
-  .hmr()
-  .watch();
+  });
+}
+
+const bundle = fuse.bundle('app').instructions(' > app/App.tsx');
+
+if (!isProduction) {
+  bundle.hmr().watch();
+}
 
 fuse.run();

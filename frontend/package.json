@@ -33,7 +33,8 @@
     "yarn": "^1.16.0"
   },
   "scripts": {
-    "start": "node fuse.js",
+    "start": "NODE_ENV=development node fuse.js",
+    "build": "NODE_ENV=production node fuse.js",
     "test": "export TS_NODE_PROJECT='./src/tsconfig.json'; mocha -r ts-node/register -r tsconfig-paths/register src/**/*.test.ts"
   },
   "keywords": [
