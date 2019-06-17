@@ -25,7 +25,7 @@ class AccountSettingsModel implements AccountSettingsForm {
 
   @computed
   get isDisabled() {
-    return Object.keys(this.data).some((key: any) => this.errors[key]);
+    return Object.keys(this.errors).some((key: any) => this.errors[key]);
   }
 
   initialize = ({ email, first_name, last_name }) => {

@@ -1,13 +1,7 @@
 import Processing from 'app/ui/Processing';
-import classNames from 'classnames';
+import SignUpField from './SignUpField';
 
-const SignUpVuew = ({
-  errors,
-  handleBlur,
-  handleChange,
-  handleSubmit,
-  isSubmitting,
-}) => (
+const SignUpVuew = ({ handleSubmit, isSubmitting }) => (
   <div className="level">
     <div className="level-item">
       <section className="section">
@@ -19,75 +13,22 @@ const SignUpVuew = ({
 
           <div className="field">
             <label className="label">Имя</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['first_name'],
-                })}
-                type="text"
-                name="first_name"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['first_name'] && (
-                <p className="help is-danger">{errors['first_name']}</p>
-              )}
-            </div>
+            <SignUpField field="first_name" />
           </div>
 
           <div className="field">
             <label className="label">Фамилия</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['last_name'],
-                })}
-                type="text"
-                name="last_name"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['last_name'] && (
-                <p className="help is-danger">{errors['last_name']}</p>
-              )}
-            </div>
+            <SignUpField field="last_name" />
           </div>
 
           <div className="field">
             <label className="label">Email</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['email'],
-                })}
-                type="email"
-                name="email"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['email'] && (
-                <p className="help is-danger">{errors['email']}</p>
-              )}
-            </div>
+            <SignUpField field="email" type="email" />
           </div>
 
           <div className="field">
             <label className="label">Password</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['password'],
-                })}
-                type="password"
-                name="password"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-                autoComplete=""
-              />
-              {errors['password'] && (
-                <p className="help is-danger">{errors['password']}</p>
-              )}
-            </div>
+            <SignUpField field="password" type="password" />
           </div>
 
           <button className="button" type="submit">

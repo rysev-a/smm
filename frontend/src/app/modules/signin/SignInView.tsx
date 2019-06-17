@@ -1,13 +1,7 @@
 import Processing from 'app/ui/Processing';
-import classNames from 'classnames';
+import SignInField from './SignInFIeld';
 
-const SignInView = ({
-  errors,
-  handleBlur,
-  handleChange,
-  handleSubmit,
-  isSubmitting,
-}) => (
+const SignInView = ({ handleSubmit, isSubmitting }) => (
   <div className="level">
     <div className="level-item">
       <section className="section">
@@ -19,39 +13,12 @@ const SignInView = ({
 
           <div className="field">
             <label className="label">Email</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['email'],
-                })}
-                type="email"
-                name="email"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-              />
-              {errors['email'] && (
-                <p className="help is-danger">{errors['email']}</p>
-              )}
-            </div>
+            <SignInField field="email" type="email" />
           </div>
 
           <div className="field">
             <label className="label">Password</label>
-            <div className="control">
-              <input
-                className={classNames('input', {
-                  'is-danger': errors['password'],
-                })}
-                type="password"
-                name="password"
-                onKeyUp={handleChange}
-                onBlur={handleBlur}
-                autoComplete=""
-              />
-              {errors['password'] && (
-                <p className="help is-danger">{errors['password']}</p>
-              )}
-            </div>
+            <SignInField field="password" type="password" />
           </div>
 
           <button className="button" type="submit">

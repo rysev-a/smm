@@ -21,7 +21,7 @@ class AccountSignup(Resource):
         exist_user = User.query.filter_by(email=request.json['email']).first()
         if exist_user:
             return {'message': {
-                'email': 'Email already exists'
+                'email': 'EMAIL_IS_ALREADY_EXIST'
             }}, 400
 
         user = User(**request.json)
@@ -41,12 +41,12 @@ class AccountSignin(Resource):
         user = User.query.filter_by(email=email).first()
         if not user:
             return {
-                'message': {'email': 'Почта не найдена'}
+                'message': {'email': 'EMAIL_NOT_FOUND'}
             }, 400
 
         if not user.verify_password(password):
             return {
-                'message': {'password': 'Неверный пароль'}
+                'message': {'password': 'PASSWORD_INCORRECT'}
             }, 400
 
         login_user(user)

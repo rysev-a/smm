@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import Processing from 'app/ui/Processing';
+import Translate from 'app/core/plugins/Translate';
 
 const AccountSettingsView = ({
   account: {
@@ -35,7 +36,9 @@ const AccountSettingsView = ({
                 onBlur={handleBlur}
               />
               {errors['first_name'] && (
-                <p className="help is-danger">{errors['first_name']}</p>
+                <p className="help is-danger">
+                  <Translate>{errors['first_name']}</Translate>
+                </p>
               )}
             </div>
           </div>
@@ -53,7 +56,9 @@ const AccountSettingsView = ({
                 onBlur={handleBlur}
               />
               {errors['last_name'] && (
-                <p className="help is-danger">{errors['last_name']}</p>
+                <p className="help is-danger">
+                  <Translate>{errors['last_name']}</Translate>
+                </p>
               )}
             </div>
           </div>
@@ -72,7 +77,9 @@ const AccountSettingsView = ({
                 onBlur={handleBlur}
               />
               {errors['email'] && (
-                <p className="help is-danger">{errors['email']}</p>
+                <p className="help is-danger">
+                  <Translate>{errors['email']}</Translate>
+                </p>
               )}
             </div>
           </div>

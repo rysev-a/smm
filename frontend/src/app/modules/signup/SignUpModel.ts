@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 import { validate } from 'app/core/utils/validators';
 import { accountApi } from 'app/services';
 import accountModel from '../account/AccountModel';
@@ -49,8 +49,19 @@ class SignUpModel implements SignUpForm {
     this.validateField(fieldName);
   };
 
+  @computed
+  get isDisabled() {
+    return Object.keys(this.errors).some((key: any) => this.errors[key]);
+  }
+
   handleSubmit = e => {
     e.preventDefault();
+
+    this.validate();
+
+    if (this.isDisabled) {
+      return false;
+    }
 
     accountApi
       .signup(this.serialize())
@@ -85,7 +96,7 @@ class SignUpModel implements SignUpForm {
   };
 
   validate = () => {
-    const validateFields = ['email'];
+    const validateFields = ['email', 'first_name', 'last_name', 'password'];
     validateFields.map(field => this.validateField(field));
   };
 

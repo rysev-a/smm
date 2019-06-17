@@ -1,19 +1,19 @@
 const validateTemplates = {
   email: {
     regExp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    message: 'Неверный формат email',
+    message: 'EMAIL_WRONG_FORMAT',
   },
   first_name: {
     regExp: /^[A-Za-zА-Яа-я\-]{1,64}$/,
-    message: 'Неверный формат имени',
+    message: 'FIRST_NAME_WRONG_FORMAT',
   },
   last_name: {
     regExp: /^[A-Za-zА-Яа-я\-]{1,64}$/,
-    message: 'Неверный формат фамилии',
+    message: 'LAST_NAME_WRONG_FORMAT',
   },
   password: {
     regExp: /^(.){6,64}$/,
-    message: 'Пароль должен быть не менее 6 символов',
+    message: 'PASSWORD_LESS_SIX_SYMBOLS',
   },
 };
 

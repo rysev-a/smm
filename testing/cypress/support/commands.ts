@@ -1,17 +1,14 @@
 import * as yaml from 'yamljs';
 
 Cypress.Commands.add('loadFixtures', () => {
-  const fixtures = ['users', 'roles'];
-
-  fixtures.reduce(
-    (acc: any, fixture) =>
-      acc.then(() =>
-        cy
-          .readFile(`../fixtures/${fixture}.yaml`)
-          .then(data => cy.wrap(yaml.parse(data)).as(fixture))
-      ),
-    Promise.resolve()
-  );
+  Promise.all([
+    cy
+      .readFile('../fixtures/roles.yaml')
+      .then(data => cy.wrap(yaml.parse(data)).as('roles')),
+    cy
+      .readFile('../fixtures/users.yaml')
+      .then(data => cy.wrap(yaml.parse(data)).as('users')),
+  ]);
 });
 
 Cypress.Commands.add('generateDb', () => {
@@ -21,3 +18,7 @@ Cypress.Commands.add('generateDb', () => {
 Cypress.Commands.add('clearDb', () =>
   cy.request('POST', '/api/v1/cypress/clear')
 );
+
+Cypress.Commands.add('deleteUser', id => {
+  cy.request('DELETE', `/api/v1/users/${id}`);
+});
