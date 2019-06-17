@@ -1,8 +1,8 @@
 import { observable, computed } from 'mobx';
+import history from 'app/core/history';
 import { validate } from 'app/core/utils/validators';
 import { accountApi } from 'app/services';
 import accountModel from '../account/AccountModel';
-import history from 'app/core/history';
 
 export interface SignUpForm {
   // actions
@@ -18,19 +18,24 @@ export interface SignUpForm {
   reset(): void;
 
   // data
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
+  values: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    password: string;
+  };
+
   isSubmitting: boolean;
   errors: {};
 }
 
 class SignUpModel implements SignUpForm {
-  @observable first_name = '';
-  @observable last_name = '';
-  @observable email = '';
-  @observable password = '';
+  @observable values = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+  };
   @observable isSubmitting = false;
   @observable errors = {
     email: '',
@@ -39,8 +44,17 @@ class SignUpModel implements SignUpForm {
     last_name: '',
   };
 
+  defaultSignUpValues = () => {
+    return {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+    };
+  };
+
   handleChange = e => {
-    this[e.target.name] = e.target.value;
+    this.values[e.target.name] = e.target.value;
     this.resetFieldValidation(e.target.name);
   };
 
@@ -74,10 +88,7 @@ class SignUpModel implements SignUpForm {
   };
 
   reset = () => {
-    this.email = '';
-    this.password = '';
-    this.first_name = '';
-    this.last_name = '';
+    this.values = this.defaultSignUpValues();
   };
 
   resetFieldValidation = field => {
@@ -88,7 +99,7 @@ class SignUpModel implements SignUpForm {
   };
 
   validateField = field => {
-    const value = this[field];
+    const value = this.values[field];
     this.errors = {
       ...this.errors,
       [`${field}`]: validate({ name: field, value }) || '',
@@ -102,10 +113,10 @@ class SignUpModel implements SignUpForm {
 
   serialize = () => {
     return {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-      password: this.password,
+      first_name: this.values.first_name,
+      last_name: this.values.last_name,
+      email: this.values.email,
+      password: this.values.password,
     };
   };
 

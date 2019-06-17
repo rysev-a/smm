@@ -1,0 +1,7 @@
+.account-menu:hover .account-menu-dropdown {
+  display: block;
+}
+
+.account-menu-dropdown {
+  display: none;
+}

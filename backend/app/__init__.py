@@ -6,6 +6,7 @@ from app.core.auth import login_manager
 from app.modules.users import init_users
 from app.modules.ping import init_ping
 from app.modules.account import init_account
+from app.modules.projects import init_projects
 from app.modules.cypress import init_cypress
 
 
@@ -21,6 +22,7 @@ def create_app(settings='app.settings.development'):
     init_users()
     init_ping()
     init_account()
+    init_projects()
     init_cypress()
 
     api.init_app(app)

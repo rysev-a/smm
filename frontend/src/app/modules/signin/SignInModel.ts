@@ -1,12 +1,14 @@
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 import { validate } from 'app/core/utils/validators';
 import { accountApi } from 'app/services';
 import accountModel from 'app/modules/account/AccountModel';
 import history from 'app/core/history';
 
 interface SignInForm {
-  email: string;
-  password: string;
+  values: {
+    email: string;
+    password: string;
+  };
   handleChange(event): void;
   handleBlur(event): void;
   validateField(field): void;
@@ -17,22 +19,30 @@ interface SignInForm {
 }
 
 class SignInModel implements SignInForm {
-  @observable email = '';
-  @observable password = '';
+  @observable values = {
+    email: '',
+    password: '',
+  };
   @observable errors = {};
   @observable isSubmitting = false;
 
   handleChange = e => {
-    this[e.target.name] = e.target.value;
+    this.values[e.target.name] = e.target.value;
     this.resetFieldValidation(e.target.name);
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    this.validate();
+
+    if (this.isDisabled) {
+      return false;
+    }
+
     accountApi
       .signin({
-        email: this.email,
-        password: this.password,
+        email: this.values.email,
+        password: this.values.password,
       })
       .then(() => this.onSuccess())
       .catch(error => this.onError(error));
@@ -44,7 +54,7 @@ class SignInModel implements SignInForm {
   };
 
   validateField = field => {
-    const value = this[field];
+    const value = this.values[field];
     this.errors = {
       ...this.errors,
       [`${field}`]: validate({ name: field, value }) || '',
@@ -55,6 +65,11 @@ class SignInModel implements SignInForm {
     const validateFields = ['email'];
     validateFields.map(field => this.validateField(field));
   };
+
+  @computed
+  get isDisabled() {
+    return Object.keys(this.errors).some((key: any) => this.errors[key]);
+  }
 
   onSuccess = () => {
     this.isSubmitting = false;

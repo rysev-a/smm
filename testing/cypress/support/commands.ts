@@ -8,6 +8,9 @@ Cypress.Commands.add('loadFixtures', () => {
     cy
       .readFile('../fixtures/users.yaml')
       .then(data => cy.wrap(yaml.parse(data)).as('users')),
+    cy
+      .readFile('../fixtures/projects.yaml')
+      .then(data => cy.wrap(yaml.parse(data)).as('projects')),
   ]);
 });
 
@@ -21,4 +24,8 @@ Cypress.Commands.add('clearDb', () =>
 
 Cypress.Commands.add('deleteUser', id => {
   cy.request('DELETE', `/api/v1/users/${id}`);
+});
+
+Cypress.Commands.add('authorize', user => {
+  cy.request('POST', '/api/v1/account/signin', user);
 });

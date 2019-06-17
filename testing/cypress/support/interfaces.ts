@@ -6,5 +6,6 @@ declare namespace Cypress {
     clearDb: () => void;
     loadFixtures: () => void;
     deleteUser: (id: number) => void;
+    authorize: (user: object) => void;
   }
 }

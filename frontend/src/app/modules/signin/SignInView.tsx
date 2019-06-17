@@ -1,7 +1,9 @@
 import Processing from 'app/ui/Processing';
 import SignInField from './SignInFIeld';
 
-const SignInView = ({ handleSubmit, isSubmitting }) => (
+const SignInView = ({
+  signInModel: { handleSubmit, isSubmitting, isDisabled },
+}) => (
   <div className="level">
     <div className="level-item">
       <section className="section">
@@ -21,7 +23,7 @@ const SignInView = ({ handleSubmit, isSubmitting }) => (
             <SignInField field="password" type="password" />
           </div>
 
-          <button className="button" type="submit">
+          <button className="button" type="submit" disabled={isDisabled}>
             Войти
           </button>
         </form>

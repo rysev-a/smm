@@ -64,6 +64,14 @@ class AccountUpdate(Resource):
     @staticmethod
     def post():
         query = User.query.filter_by(id=current_user.id)
+
+        exist_user = User.query.filter_by(email=request.json['email']).first()
+
+        if exist_user and exist_user.id != current_user.id:
+            return {'message': {
+                'email': 'EMAIL_IS_ALREADY_EXIST'
+            }}, 400
+
         query.update(request.json)
         db.session.commit()
         return {'message': 'update account ok'}

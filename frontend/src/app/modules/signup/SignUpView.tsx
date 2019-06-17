@@ -1,7 +1,9 @@
 import Processing from 'app/ui/Processing';
 import SignUpField from './SignUpField';
 
-const SignUpVuew = ({ handleSubmit, isSubmitting }) => (
+const SignUpVuew = ({
+  signUpModel: { handleSubmit, isSubmitting, isDisabled },
+}) => (
   <div className="level">
     <div className="level-item">
       <section className="section">
@@ -31,7 +33,7 @@ const SignUpVuew = ({ handleSubmit, isSubmitting }) => (
             <SignUpField field="password" type="password" />
           </div>
 
-          <button className="button" type="submit">
+          <button className="button" type="submit" disabled={isDisabled}>
             Отправить
           </button>
         </form>

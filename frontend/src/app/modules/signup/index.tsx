@@ -2,6 +2,7 @@ import { observer } from 'inferno-mobx';
 import SignUpView from './SignUpView';
 import signUpModel from './SignUpModel';
 
-const SignUp = () => <SignUpView {...signUpModel} />;
+const SignUpObservableView = observer(SignUpView);
+const SignUp = () => <SignUpObservableView signUpModel={signUpModel} />;
 
-export default observer(SignUp);
+export default SignUp;

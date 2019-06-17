@@ -3,6 +3,7 @@ import click
 from app import create_app
 from app.core.database import db
 from app.modules.users.cli import user_cli, role_cli
+from app.modules.projects.cli import project_cli
 
 app = create_app(os.environ.get(
     'SETTINGS_ENV',
@@ -11,6 +12,7 @@ app = create_app(os.environ.get(
 
 app.cli.add_command(user_cli)
 app.cli.add_command(role_cli)
+app.cli.add_command(project_cli)
 
 
 @app.cli.command()

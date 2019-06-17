@@ -3,19 +3,19 @@ import { accountApi } from 'app/services';
 import { validate } from 'app/core/utils/validators';
 
 interface AccountSettingsForm {
-  data: {};
+  values: {};
   errors: {};
   isSubmitting: boolean;
 }
 
-const defaultAccountData = () => ({
-  email: 'default',
+const defaultAccountValues = () => ({
+  email: '',
   first_name: '',
   last_name: '',
 });
 
 class AccountSettingsModel implements AccountSettingsForm {
-  @observable data = defaultAccountData();
+  @observable values = defaultAccountValues();
   @observable isSubmitting = false;
   @observable errors = {
     email: '',
@@ -29,7 +29,7 @@ class AccountSettingsModel implements AccountSettingsForm {
   }
 
   initialize = ({ email, first_name, last_name }) => {
-    this.data = {
+    this.values = {
       email,
       last_name,
       first_name,
@@ -37,8 +37,8 @@ class AccountSettingsModel implements AccountSettingsForm {
   };
 
   handleChange = e => {
-    this.data = {
-      ...this.data,
+    this.values = {
+      ...this.values,
       [e.target.name]: e.target.value,
     };
 
@@ -60,7 +60,7 @@ class AccountSettingsModel implements AccountSettingsForm {
     }
 
     accountApi
-      .update(this.data)
+      .update(this.values)
       .then(() => {
         this.onSuccess();
       })
@@ -70,7 +70,7 @@ class AccountSettingsModel implements AccountSettingsForm {
   };
 
   reset = () => {
-    this.data = defaultAccountData();
+    this.values = defaultAccountValues();
   };
 
   resetFieldValidation = field => {
@@ -81,7 +81,7 @@ class AccountSettingsModel implements AccountSettingsForm {
   };
 
   validateField = field => {
-    const value = this.data[field];
+    const value = this.values[field];
     this.errors = {
       ...this.errors,
       [`${field}`]: validate({ name: field, value }) || '',
@@ -110,7 +110,7 @@ class AccountSettingsModel implements AccountSettingsForm {
 
   onSuccess = () => {
     this.isSubmitting = false;
-    this.syncAccountModel(this.data);
+    this.syncAccountModel(this.values);
   };
 }
 

@@ -27,6 +27,7 @@
     "yamljs": "^0.3.0"
   },
   "scripts": {
+    "cypress:run": "./node_modules/.bin/cypress run",
     "cypress:open": "./node_modules/.bin/cypress open"
   },
   "keywords": [

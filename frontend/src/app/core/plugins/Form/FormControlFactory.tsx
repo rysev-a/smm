@@ -21,6 +21,7 @@ const FormControl = observer(({ field, type = 'text', formModel }) => (
       name={field}
       onKeyUp={formModel.handleChange}
       onBlur={formModel.handleBlur}
+      defaultValue={formModel.values[field]}
     />
     {formModel.errors[field] && (
       <p className={classNames('help is-danger', errorMessageClassName)}>

@@ -1,7 +1,8 @@
-import { observer } from 'inferno-mobx';
 import signInModel from './SignInModel';
 import SignInView from './SignInView';
+import { observer } from 'inferno-mobx';
 
-const SignIn = observer(() => <SignInView {...signInModel} />);
+const SignInObserverView = observer(SignInView);
+const SignIn = () => <SignInObserverView signInModel={signInModel} />;
 
 export default SignIn;
