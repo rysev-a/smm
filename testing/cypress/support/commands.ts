@@ -22,10 +22,16 @@ Cypress.Commands.add('clearDb', () =>
   cy.request('POST', '/api/v1/cypress/clear')
 );
 
+Cypress.Commands.add('authorize', user => {
+  cy.request('POST', '/api/v1/account/signin', user);
+});
+
+// delete models
+
 Cypress.Commands.add('deleteUser', id => {
   cy.request('DELETE', `/api/v1/users/${id}`);
 });
 
-Cypress.Commands.add('authorize', user => {
-  cy.request('POST', '/api/v1/account/signin', user);
+Cypress.Commands.add('deleteProject', id => {
+  cy.request('DELETE', `/api/v1/projects/${id}`);
 });

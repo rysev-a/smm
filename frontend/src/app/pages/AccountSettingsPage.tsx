@@ -3,7 +3,7 @@ import AccountSettings from 'app/modules/account-settings';
 const AccountSettingsPage = () => (
   <div className="section">
     <div className="container">
-      <div className="signin-page">
+      <div className="account-settings-page">
         <AccountSettings />
       </div>
     </div>

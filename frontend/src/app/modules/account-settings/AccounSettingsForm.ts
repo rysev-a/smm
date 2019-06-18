@@ -1,5 +1,5 @@
 import { observable, computed } from 'mobx';
-import { accountApi } from 'app/services';
+import { accountApi } from 'app/services/api';
 import { validate } from 'app/core/utils/validators';
 
 interface AccountSettingsForm {

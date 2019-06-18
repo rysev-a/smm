@@ -5,7 +5,10 @@ declare namespace Cypress {
     generateDb: () => void;
     clearDb: () => void;
     loadFixtures: () => void;
-    deleteUser: (id: number) => void;
     authorize: (user: object) => void;
+
+    // delete models
+    deleteUser: (id: number) => void;
+    deleteProject: (id: number) => void;
   }
 }

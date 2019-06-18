@@ -27,7 +27,7 @@ class ProjectCreate(Resource):
         db.session.add(project)
         db.session.commit()
 
-        return {'message': 'ok'}
+        return marshal(project, project_detail_fields)
 
 
 class ProjectUpdate(Resource):

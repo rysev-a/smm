@@ -1,7 +1,7 @@
 import { observable, computed } from 'mobx';
 import history from 'app/core/history';
 import { validate } from 'app/core/utils/validators';
-import { accountApi } from 'app/services';
+import { accountApi } from 'app/services/api';
 import accountModel from '../account/AccountModel';
 
 export interface SignUpForm {

@@ -1,6 +1,6 @@
 import { observable, computed } from 'mobx';
 import { validate } from 'app/core/utils/validators';
-import { accountApi } from 'app/services';
+import { accountApi } from 'app/services/api';
 import accountModel from 'app/modules/account/AccountModel';
 import history from 'app/core/history';
 

@@ -1,11 +1,12 @@
 import { observable } from 'mobx';
-import { accountApi } from 'app/services';
+import { accountApi } from 'app/services/api';
 import history from 'app/core/history';
 import accountSettings from '../account-settings/AccounSettingsForm';
 
 interface AccountModelData {
   data: {};
   processing: boolean;
+  loaded: boolean;
   isAuth: boolean;
 
   load(callback): void;
@@ -22,6 +23,7 @@ class AccountModel implements AccountModelData {
   @observable data = defaultAccountData();
   @observable processing = false;
   @observable isAuth = false;
+  @observable loaded = false;
 
   load = (callback = null) => {
     this.processing = true;
@@ -32,8 +34,9 @@ class AccountModel implements AccountModelData {
         this.data = {
           ...data,
         };
-        this.processing = false;
         this.isAuth = true;
+        this.loaded = true;
+        this.processing = false;
         this.initializeAccountFormSettings();
 
         if (typeof callback === 'function') {
@@ -41,6 +44,7 @@ class AccountModel implements AccountModelData {
         }
       })
       .catch(() => {
+        this.loaded = true;
         this.processing = false;
         this.isAuth = false;
       });
