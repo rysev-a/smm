@@ -1,4 +1,10 @@
 import 'bulma/css/bulma.min.css';
+import 'normalize.css/normalize.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+
+if (process.env.NODE_ENV !== 'production') {
+  require('app/core/hmr');
+}
 
 import * as inferno from 'inferno';
 import { Provider } from 'inferno-mobx';
@@ -19,6 +25,7 @@ import SignInPage from './pages/SignInPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
 import UserDetailPage from './pages/users/UserDetailPage';
 import ProjectDetailPage from './pages/projects/ProjectDetailPage';
+import ProjectEditPage from './pages/projects/ProjectEditForm';
 
 inferno.render(
   <Provider store={store}>
@@ -39,6 +46,11 @@ inferno.render(
             path="/projects/:projectId"
             exact
             component={ProjectDetailPage}
+          />
+          <Route
+            path="/projects/:projectId/edit"
+            exact
+            component={ProjectEditPage}
           />
         </Switch>
         <Route path="/account/settings" component={AccountSettingsPage} />

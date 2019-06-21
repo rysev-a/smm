@@ -11,10 +11,12 @@
     "inferno-mobx": "^7.1.11",
     "inferno-router": "^7.1.11",
     "mobx": "^5.9.4",
+    "normalize.css": "^8.0.1",
     "ramda": "^0.26.1",
     "typestyle": "^2.0.2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "@types/chai": "^4.1.7",
     "@types/history": "^4.7.2",
     "@types/mocha": "^5.2.5",

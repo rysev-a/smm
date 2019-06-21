@@ -11,13 +11,13 @@ interface FormModel {
   submit(values): any;
 
   // data
-  isSubmitting: boolean;
+  processing: boolean;
   values: {};
   errors: {};
 }
 
 class Form implements FormModel {
-  @observable isSubmitting = false;
+  @observable processing = false;
   @observable errors = {};
   @observable values = {};
 
@@ -64,7 +64,8 @@ class Form implements FormModel {
       return false;
     }
 
-    this.submit(this.values)
+    this.processing = true;
+    this.submit(this.serializeValues(this.values))
       .then(response => {
         this.onSuccess(response);
       })
@@ -74,7 +75,7 @@ class Form implements FormModel {
   };
 
   onError = response => {
-    this.isSubmitting = false;
+    this.processing = false;
 
     const {
       data: { message },
@@ -87,15 +88,21 @@ class Form implements FormModel {
   };
 
   onSuccess = response => {
-    this.isSubmitting = false;
+    this.processing = false;
 
     if (typeof this.onSuccessCallback === 'function') {
       this.onSuccessCallback(this.values, response);
     }
   };
 
+  reset = () => {
+    this.values = this.getDefaultValues();
+  };
+
+  getDefaultValues = null;
   submit = null;
   onSuccessCallback = null;
+  serializeValues = null;
 }
 
 export default Form;

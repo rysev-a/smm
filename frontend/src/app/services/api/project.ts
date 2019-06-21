@@ -4,7 +4,7 @@ import { apiFactory } from './factory';
 
 export const projectApi = {
   create: {
-    post: data => axios.post(`${API_URL}/projects/create`, data),
+    post: values => axios.post(`${API_URL}/projects/create`, values),
   },
   update: {
     put: ({ id, values }) =>

@@ -16,9 +16,6 @@ const AccountMenuView = observer(({ account }) => {
           id="account-dropdown">
           <a className="navbar-link">{account.data.email}</a>
           <div className="navbar-dropdown account-menu-dropdown">
-            <Link className="navbar-item" to="/account/projects">
-              Мои проекты
-            </Link>
             <Link className="navbar-item" to="/account/settings">
               Настройки
             </Link>

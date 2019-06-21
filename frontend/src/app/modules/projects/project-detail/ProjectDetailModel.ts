@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import { projectApi } from 'app/services/api';
+import history from 'app/core/history';
 
 const defaultProjectDetailData = () => ({
   id: 0,
@@ -43,8 +44,14 @@ class ProjectDetailModel {
   }
 
   @action.bound
+  editProject() {
+    history.push(`/projects/${this.data.id}/edit`);
+  }
+
+  @action.bound
   reset() {
     this.data = defaultProjectDetailData();
+    this.loaded = false;
   }
 }
 

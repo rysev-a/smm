@@ -19,4 +19,7 @@ project_detail_fields = {
     'name': fields.String,
     'description': fields.String,
     'creator': fields.Nested(user_fields),
+    'users': fields.List(
+        fields.Nested(user_fields)
+    )
 }

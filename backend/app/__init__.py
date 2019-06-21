@@ -10,9 +10,17 @@ from app.modules.projects import init_projects
 from app.modules.cypress import init_cypress
 
 
+import time
+
+
 def create_app(settings='app.settings.development'):
     app = Flask(__name__)
     app.config.from_object(settings)
+
+    @app.before_request
+    def before_request():
+        # time.sleep(1)
+        pass
 
     # init database
     db.init_app(app)

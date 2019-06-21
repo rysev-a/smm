@@ -2,6 +2,7 @@ const {
   FuseBox,
   WebIndexPlugin,
   CSSPlugin,
+  CSSResourcePlugin,
   ImageBase64Plugin,
   QuantumPlugin,
 } = require('fuse-box');
@@ -18,7 +19,12 @@ const fuse = FuseBox.init({
   output: 'build/$name.js',
   plugins: [
     WebIndexPlugin({ template: 'src/assets/index.html' }),
-    CSSPlugin(),
+    [
+      CSSResourcePlugin({
+        dist: 'build/css-resources',
+      }),
+      CSSPlugin(),
+    ],
     ImageBase64Plugin(),
     isProduction && QuantumPlugin(),
   ],
@@ -26,6 +32,12 @@ const fuse = FuseBox.init({
     before: [TsTransformInferno()],
   },
 });
+
+// fuse.register('font-awesome', {
+//   homeDir: 'node_modules/@fortawesome/fontawesome-free/css',
+//   main: 'all.css',
+//   instructions: 'font-awesome',
+// });
 
 // run dev server
 if (!isProduction) {

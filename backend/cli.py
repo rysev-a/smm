@@ -5,6 +5,9 @@ from app.core.database import db
 from app.modules.users.cli import user_cli, role_cli
 from app.modules.projects.cli import project_cli
 
+from app.modules.users.models import User, Role
+from app.modules.projects.models import Project
+
 app = create_app(os.environ.get(
     'SETTINGS_ENV',
     'app.settings.development'
@@ -26,4 +29,7 @@ def make_shell_context():
     return dict(
         app=app,
         db=db,
+        User=User,
+        Role=Role,
+        Project=Project
     )

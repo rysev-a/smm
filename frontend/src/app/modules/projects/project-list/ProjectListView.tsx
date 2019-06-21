@@ -2,8 +2,7 @@ import Processing from 'app/ui/Processing';
 import { Link } from 'inferno-router';
 
 const ProjectListComponent = ({
-  projectList: { items, pagination, status },
-  // pageSet,
+  projectList: { items, status, editProject, removeProject },
 }) => (
   <div className="projects">
     <Processing processing={status.processing} />
@@ -18,6 +17,7 @@ const ProjectListComponent = ({
             <th>Название</th>
             <td>Создатель</td>
             <td>Описание</td>
+            <td>Действия</td>
           </tr>
         </thead>
 
@@ -34,16 +34,27 @@ const ProjectListComponent = ({
                 </Link>
               </td>
               <td>{description}</td>
+              <td>
+                <div className="is-grouped field">
+                  <div className="control">
+                    <a
+                      className="button is-primary is-small"
+                      onClick={() => editProject(id)}>
+                      Редактировать
+                    </a>
+                  </div>
+                  <div className="control">
+                    <a
+                      className="button is-danger is-small"
+                      onClick={() => removeProject(id)}>
+                      Удалить
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan={4}>
-              {/* <Pagination pagination={pagination} pageSet={pageSet} /> */}
-            </td>
-          </tr>
-        </tfoot>
       </table>
     )}
   </div>

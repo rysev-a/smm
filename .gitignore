@@ -4,6 +4,8 @@
 /backend/app/settings/production.py
 /backend/app/settings/test.py
 
+/backend/shell.py
+
 /frontend/node_modules
 /frontend/.fusebox
 /frontend/build

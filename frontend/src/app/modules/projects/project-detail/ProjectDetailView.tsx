@@ -1,8 +1,11 @@
 import Processing from 'app/ui/Processing';
+import ProjectDetailUsers from './ProjectDetailUsers';
+import { toJS } from 'mobx';
 
 const ProjectDetailComponent = ({
   projectDetailModel: {
-    data: { id, name, description, creator },
+    data: { id, name, description, creator, users },
+    editProject,
     loaded,
     processing,
   },
@@ -37,10 +40,12 @@ const ProjectDetailComponent = ({
             </p>
             <h2 className="is-size-4 title has-text-weight-normal">Описание</h2>
             <p>{description}</p>
-
-            <h3 className="is-size-5 title has-text-weight-normal">
-              Пока что нет ни одного участника
-            </h3>
+            <ProjectDetailUsers users={toJS(users)} />
+            <div className="buttons">
+              <a className="button is-primary" onClick={editProject}>
+                Редактировать
+              </a>
+            </div>
           </div>
         )}
       </div>
