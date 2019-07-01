@@ -6,9 +6,12 @@ import history from 'app/core/history';
 import { projectApi, userApi } from 'app/services/api';
 
 class ProjectEditForm extends Form {
+  loadTimer: any;
+
   constructor() {
     super();
     this.values = this.getDefaultValues();
+    this.loadTimer = null;
   }
 
   @observable userOptions = [];
@@ -62,15 +65,21 @@ class ProjectEditForm extends Form {
   };
 
   loadOptions = query => {
-    userApi.list
-      .get({
-        pagination: { page: 1, count: 10 },
-        filters: this.getFilters(query),
-        sorting: {},
-      })
-      .then(response => {
-        this.userOptions = response.data.items;
-      });
+    if (this.loadTimer) {
+      clearInterval(this.loadTimer);
+    }
+
+    this.loadTimer = setTimeout(() => {
+      userApi.list
+        .get({
+          pagination: { page: 1, count: 10 },
+          filters: this.getFilters(query),
+          sorting: {},
+        })
+        .then(response => {
+          this.userOptions = response.data.items;
+        });
+    }, 200);
   };
 
   onSuccessCallback = (_, response) => {

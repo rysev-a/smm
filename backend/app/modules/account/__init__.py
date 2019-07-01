@@ -10,7 +10,7 @@ from .resources import (
 )
 
 
-def init_account():
+def init():
     api.add_resource(AccountInfo, '/api/v1/account')
     api.add_resource(AccountSignin, '/api/v1/account/signin')
     api.add_resource(AccountSignup, '/api/v1/account/signup')

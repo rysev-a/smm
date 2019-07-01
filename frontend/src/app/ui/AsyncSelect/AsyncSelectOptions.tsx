@@ -7,7 +7,6 @@ import {
 
 const filterOptions = (options, values) => {
   const valueIDs = map(({ id }) => id)(values);
-  console.log(options, valueIDs);
 
   const optionInValues = (option: any): boolean =>
     not(includes(option.id, valueIDs));

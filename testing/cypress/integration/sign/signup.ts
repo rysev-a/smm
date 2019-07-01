@@ -9,9 +9,9 @@ describe('Sign up', function() {
   });
 
   it('Sign up success', function() {
-    const user = this.users[0];
+    const user = this.users[2];
 
-    cy.deleteUser(1);
+    cy.deleteUser(3);
     cy.visit('/');
     cy.contains('Регистрация').click();
 

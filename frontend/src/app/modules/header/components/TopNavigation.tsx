@@ -15,24 +15,35 @@ const TopNavigation = observer(
           'navbar-menu'
         )}>
         <div
-          className={classNames('navbar-item', {
-            'has-dropdown is-hoverable': account.isAuth,
-          })}
+          className="navbar-item has-dropdown is-hoverable"
           id="project-dropdown">
-          <Link
-            to="/projects"
-            className={account.isAuth ? 'navbar-link' : 'navbar-item'}>
+          <Link to="/projects" className="navbar-link">
             Проекты
           </Link>
-          {account.isAuth && (
-            <div className="navbar-dropdown">
-              <div className="sign-menu">
-                <Link to="/projects/create" className="navbar-item">
-                  Создать проект
-                </Link>
-              </div>
+
+          <div className="navbar-dropdown">
+            <div className="sign-menu">
+              <Link to="/projects/create" className="navbar-item">
+                Создать проект
+              </Link>
             </div>
-          )}
+          </div>
+        </div>
+
+        <div
+          className="navbar-item has-dropdown is-hoverable"
+          id="task-dropdown">
+          <Link to="/tasks" className="navbar-link">
+            Задачи
+          </Link>
+
+          <div className="navbar-dropdown">
+            <div className="sign-menu">
+              <Link to="/tasks/create" className="navbar-item">
+                Создать задачу
+              </Link>
+            </div>
+          </div>
         </div>
 
         <Link to="/users" className="navbar-item">

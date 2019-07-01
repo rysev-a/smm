@@ -2,7 +2,7 @@ from app.core.api import api
 from .resources import UserList, UserDetail, RoleList, RoleDetail
 
 
-def init_users():
+def init():
     api.add_resource(UserList, '/api/v1/users')
     api.add_resource(UserDetail, '/api/v1/users/<int:id>')
 

@@ -6,6 +6,8 @@ const RU = {
   LAST_NAME_WRONG_FORMAT: 'Неверный формат фамилии',
   EMAIL_IS_ALREADY_EXIST: 'Данный email занят',
   PASSWORD_LESS_SIX_SYMBOLS: 'Пароль менее 6 символов',
+  TASK_NAME_ALREADY_EXIST: 'Задача с таким именем уже существует',
+  TASK_NAME_WRONG_FORMAT: 'Неверный формат имени задачи',
 };
 
 const EN = {

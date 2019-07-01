@@ -1,12 +1,11 @@
 import { observable, computed } from 'mobx';
-import { validate } from 'app/core/utils/validators';
 
 interface FormModel {
   // actions
   handleChange(e): void;
   handleBlur(e): void;
   validateField(field): void;
-  validate(): void;
+  validateForm(): void;
   resetFieldValidation(field): void;
   submit(values): any;
 
@@ -42,11 +41,11 @@ class Form implements FormModel {
     const value = this.values[field];
     this.errors = {
       ...this.errors,
-      [`${field}`]: validate({ name: field, value }) || '',
+      [`${field}`]: this.validate({ name: field, value }) || '',
     };
   };
 
-  validate = () => {
+  validateForm = () => {
     Object.keys(this.values).map(field => this.validateField(field));
   };
 
@@ -58,7 +57,7 @@ class Form implements FormModel {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.validate();
+    this.validateForm();
 
     if (this.isDisabled) {
       return false;
@@ -103,6 +102,9 @@ class Form implements FormModel {
   submit = null;
   onSuccessCallback = null;
   serializeValues = null;
+  validate = any => {
+    return false;
+  };
 }
 
 export default Form;

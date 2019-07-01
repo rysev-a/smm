@@ -10,5 +10,6 @@ declare namespace Cypress {
     // delete models
     deleteUser: (id: number) => void;
     deleteProject: (id: number) => void;
+    deleteTask: (id: number) => void;
   }
 }

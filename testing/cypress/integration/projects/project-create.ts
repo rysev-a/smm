@@ -14,9 +14,9 @@ describe('Create project', function() {
 
   it('Create project success', function() {
     const user = this.users[0];
-    const project = this.projects[0];
+    const project = this.projects[1];
 
-    cy.deleteProject(1);
+    cy.deleteProject(2);
 
     cy.authorize(user);
     cy.visit('/projects/create');

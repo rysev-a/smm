@@ -11,6 +11,9 @@ Cypress.Commands.add('loadFixtures', () => {
     cy
       .readFile('../fixtures/projects.yaml')
       .then(data => cy.wrap(yaml.parse(data)).as('projects')),
+    cy
+      .readFile('../fixtures/tasks.yaml')
+      .then(data => cy.wrap(yaml.parse(data)).as('tasks')),
   ]);
 });
 
@@ -34,4 +37,8 @@ Cypress.Commands.add('deleteUser', id => {
 
 Cypress.Commands.add('deleteProject', id => {
   cy.request('DELETE', `/api/v1/projects/${id}`);
+});
+
+Cypress.Commands.add('deleteTask', id => {
+  cy.request('DELETE', `/api/v1/tasks/${id}`);
 });

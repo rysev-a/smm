@@ -7,6 +7,7 @@ const defaultProjectDetailData = () => ({
   name: '',
   description: '',
   creator: {},
+  users: [],
 });
 
 class ProjectDetailModel {

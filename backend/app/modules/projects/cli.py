@@ -8,7 +8,7 @@ project_cli = AppGroup('project')
 
 
 @project_cli.command('generate')
-def generate_users():
+def generate_projects():
     generate_from_mock(mock='projects', model=Project, db=db)
 
 

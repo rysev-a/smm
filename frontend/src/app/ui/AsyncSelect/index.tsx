@@ -2,9 +2,9 @@ import { Component } from 'inferno';
 import classNames from 'classnames';
 import { map, pipe, filter, includes } from 'ramda';
 import AsyncSelectOptions from './AsyncSelectOptions';
+import AsynSelectValue from './AsyncSelectValue';
 
 import {
-  optionsClassName,
   getInputClassName,
   valueClassName,
   getControlClassName,
@@ -16,6 +16,8 @@ interface AsyncSelectProps {
   getLabel(option): any;
   options: any[];
   values: any[];
+  isMulti: boolean;
+  name: string;
 }
 
 interface AsyncSelectState {
@@ -45,9 +47,15 @@ class AsyncSelect extends Component<AsyncSelectProps, AsyncSelectState> {
   }
 
   onOptionClick = optionValue => {
-    this.props.update([...this.props.values, optionValue]);
-    this.closeMenu();
-    this.setState({ inputValue: '' });
+    if (this.props.isMulti) {
+      this.props.update([...this.props.values, optionValue]);
+      this.closeMenu();
+      this.setState({ inputValue: '' });
+    } else {
+      this.props.update(optionValue);
+      this.closeMenu();
+      this.setState({ inputValue: this.props.getLabel(optionValue) });
+    }
   };
 
   onInputFocus = () => {
@@ -115,13 +123,18 @@ class AsyncSelect extends Component<AsyncSelectProps, AsyncSelectState> {
         <div
           onClick={this.onInputWrapperClick}
           className={getControlClassName(this.state.isOpen)}>
-          {this.renderValues()}
+          <AsynSelectValue
+            isMulti={this.props.isMulti}
+            removeValue={this.removeValue}
+            getLabel={this.props.getLabel}
+            values={this.props.values}
+          />
           <input
             ref={this.storeRef}
             onFocus={this.onInputFocus}
             onBlur={this.onInputBlur}
             className={getInputClassName()}
-            name="users"
+            name={this.props.name}
             onInput={this.onInputChange}
             value={this.state.inputValue}
           />

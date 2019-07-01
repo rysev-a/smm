@@ -25,7 +25,12 @@ import SignInPage from './pages/SignInPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
 import UserDetailPage from './pages/users/UserDetailPage';
 import ProjectDetailPage from './pages/projects/ProjectDetailPage';
-import ProjectEditPage from './pages/projects/ProjectEditForm';
+import ProjectEditPage from './pages/projects/ProjectEditPage';
+
+import TaskEditPage from './pages/tasks/TaskEditPage';
+import TaskCreatePage from './pages/tasks/TaskCreatePage';
+import TaskDetailPage from './pages/tasks/TaskDetailPage';
+import TaskListPage from './pages/tasks/TaskListPage';
 
 inferno.render(
   <Provider store={store}>
@@ -52,6 +57,14 @@ inferno.render(
             exact
             component={ProjectEditPage}
           />
+        </Switch>
+
+        <Route path="/tasks" exact component={TaskListPage} />
+
+        <Switch>
+          <Route path="/tasks/create" exact component={TaskCreatePage} />
+          <Route path="/tasks/:taskId" exact component={TaskDetailPage} />
+          <Route path="/tasks/:taskId/edit" exact component={TaskEditPage} />
         </Switch>
         <Route path="/account/settings" component={AccountSettingsPage} />
       </main>

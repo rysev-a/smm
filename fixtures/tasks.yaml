@@ -1,0 +1,125 @@
+- name: Выложить пост в vk
+  description: Выложить пост в vk про крафтовое пиво
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Правильно позиционировать сообщество.
+  description: Правильно позиционировать сообщество.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Управлять таргетированной рекламой во ВКонтакте.
+  description: Управлять таргетированной рекламой во ВКонтакте.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Управлять контекстной рекламой на Facebook.
+  description: Управлять контекстной рекламой на Facebook.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Понимать механизмы рекламы в приложениях ВКонтакте.
+  description: Понимать механизмы рекламы в приложениях ВКонтакте.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Прогнозировать бюджет контекстной рекламы.
+  description: Прогнозировать бюджет контекстной рекламы.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Оптимизировать бюджет контекстной рекламы.
+  description: Оптимизировать бюджет контекстной рекламы.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Проектировать и проводить конкурсы и флэшмобы.
+  description: Проектировать и проводить конкурсы и флэшмобы.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Проектировать приложения для социальных сетей.
+  description: Проектировать приложения для социальных сетей.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Создавать и продвигать мероприятия.
+  description: Создавать и продвигать мероприятия.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Адаптировать кампанию под нишевые социальные сети.
+  description: Адаптировать кампанию под нишевые социальные сети.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Управлять кампанией вирусного посева.
+  description: Управлять кампанией вирусного посева.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Работать с геосервисами.
+  description: Работать с геосервисами.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Нейтрализовывать негатив в социальных сетях и блогах.
+  description: Нейтрализовывать негатив в социальных сетях и блогах.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Работать с системой оферов.
+  description: Работать с системой оферов.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Проектировать и проводить спецпроекты.
+  description: Проектировать и проводить спецпроекты.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Работать с социальными сетями профессиональных связей.
+  description: Работать с социальными сетями профессиональных связей.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Понимать принципы формирования рейтингов и топов.
+  description: Понимать принципы формирования рейтингов и топов.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Создавать брендированные каналы на видеохостингах.
+  description: Создавать брендированные каналы на видеохостингах.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Выстраивать партнерские программы в социальных сетях.
+  description: Выстраивать партнерские программы в социальных сетях.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1
+
+- name: Пользоваться сервисами для оптимизации SMM-работ.
+  description: Пользоваться сервисами для оптимизации SMM-работ.
+  creator_id: 1
+  assignee_id: 2
+  project_id: 1

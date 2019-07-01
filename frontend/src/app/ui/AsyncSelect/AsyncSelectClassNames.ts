@@ -1,6 +1,7 @@
 import { style } from 'typestyle';
 
 export const optionsClassName = style({
+  zIndex: 2,
   marginTop: '8px',
   width: '100%',
   position: 'absolute',
@@ -31,7 +32,7 @@ export const getInputClassName = () =>
     lineHeight: 1.5,
     background: 'none',
     margin: '0 0 0 10px',
-    overflow: 'auto',
+    width: '100%',
     boxSizing: 'border-box',
   });
 

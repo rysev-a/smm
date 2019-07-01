@@ -56,11 +56,13 @@ class ProjectCreateView extends Component<ProjectCreateViewProps> {
               <div className="field">
                 <label className="label">Участники проекта</label>
                 <AsyncSelect
+                  isMulti={true}
                   getLabel={getLabel}
                   values={values.users}
                   update={updateUsers}
                   options={userOptions}
                   loadOptions={loadOptions}
+                  name="users"
                 />
               </div>
             </div>
