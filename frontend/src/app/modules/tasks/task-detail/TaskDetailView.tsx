@@ -1,5 +1,6 @@
 import Processing from 'app/ui/Processing';
 import { Component } from 'inferno';
+import * as Moment from 'moment';
 
 interface TaskDetailViewProps {
   taskDetailModel: any;
@@ -18,7 +19,7 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
   render() {
     const {
       taskDetailModel: {
-        data: { id, name, description, project, creator, assignee },
+        data: { id, name, description, project, creator, assignee, created_at },
         editTask,
         loaded,
         processing,
@@ -72,6 +73,10 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
                   Описание
                 </h2>
                 <p>{description}</p>
+                <h2 className="is-size-4 title has-text-weight-normal">
+                  Дата создания
+                </h2>
+                <p>{Moment(created_at).format('DD-MM-YYYY')}</p>
                 <div className="buttons">
                   <a className="button is-primary" onClick={editTask}>
                     Редактировать

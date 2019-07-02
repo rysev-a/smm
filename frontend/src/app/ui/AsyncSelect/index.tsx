@@ -60,6 +60,7 @@ class AsyncSelect extends Component<AsyncSelectProps, AsyncSelectState> {
 
   onInputFocus = () => {
     this.setState({ isOpen: true });
+    this.setState({ inputValue: '' });
     this.props.loadOptions(this.state.inputValue);
   };
 
@@ -91,6 +92,15 @@ class AsyncSelect extends Component<AsyncSelectProps, AsyncSelectState> {
     this.openMenu();
     this.inputRef.focus();
   };
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.isMulti === false &&
+      this.props.values !== prevProps.values
+    ) {
+      this.setState({ inputValue: this.props.getLabel(this.props.values) });
+    }
+  }
 
   renderValues = () => {
     return map(value => (

@@ -6,6 +6,7 @@
     "**/.pytest_cache": true,
     "**/node_modules": true,
     "**/build": true,
+    "**/public": true,
     "**/.fusebox": true
   },
   "editor.rulers": [80],

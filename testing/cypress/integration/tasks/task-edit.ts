@@ -37,19 +37,33 @@ describe('Edit task', function() {
 
   it('Edit task assignee', function() {
     const user = this.users[0];
-
-    const assignee = this.users[1];
+    const assignee = this.users[2];
 
     cy.authorize(user);
-
-    cy.visit('/projects/1/edit');
+    cy.visit('/tasks/1/edit');
 
     cy.get('[name="assignee"]').type(assignee.email.slice(0, 3));
-    cy.get('[name="users"]').click();
+    cy.get('[name="assignee"]').click();
     cy.contains(assignee.email).click();
 
     cy.get('form').submit();
 
-    cy.contains(assignee.email).should('exist');
+    cy.contains(assignee.first_name).should('exist');
+  });
+
+  it('Edit task project', function() {
+    const user = this.users[0];
+    const project = this.projects[2];
+
+    cy.authorize(user);
+    cy.visit('/tasks/1/edit');
+
+    cy.get('[name="project"]').type(project.name.slice(0, 3));
+    cy.get('[name="project"]').click();
+    cy.contains(project.name).click();
+
+    cy.get('form').submit();
+
+    cy.contains(project.name).should('exist');
   });
 });

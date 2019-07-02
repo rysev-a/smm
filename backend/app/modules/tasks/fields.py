@@ -29,5 +29,6 @@ task_detail_fields = {
     'project': fields.Nested(project_fields),
     'creator': fields.Nested(user_fields),
     'assignee': fields.Nested(user_fields),
-    'status': fields.String
+    'status': fields.String,
+    'created_at': fields.String,
 }

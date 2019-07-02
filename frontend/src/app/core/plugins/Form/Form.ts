@@ -30,6 +30,14 @@ class Form implements FormModel {
     this.validateField(fieldName);
   };
 
+  handleFocus = e => {
+    const fieldName = e.target.name;
+    this.errors = {
+      ...this.errors,
+      [fieldName]: null,
+    };
+  };
+
   resetFieldValidation = field => {
     this.errors = {
       ...this.errors,
@@ -96,6 +104,7 @@ class Form implements FormModel {
 
   reset = () => {
     this.values = this.getDefaultValues();
+    this.errors = {};
   };
 
   getDefaultValues = null;

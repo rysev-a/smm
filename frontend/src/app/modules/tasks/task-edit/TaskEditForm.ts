@@ -34,6 +34,7 @@ class TaskEditForm extends Form {
   getProjectLabel = ({ name }) => name;
 
   load = taskId => {
+    this.errors = {};
     this.taskId = taskId;
     this.processing = true;
 

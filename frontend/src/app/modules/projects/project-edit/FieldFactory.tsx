@@ -21,6 +21,7 @@ const InputControl = observer(({ field, type = 'text', model }) => (
       name={field}
       value={model.values[field]}
       onInput={model.handleChange}
+      onFocus={model.handleFocus}
       onBlur={model.handleBlur}
       defaultValue={model.values[field]}
     />
@@ -42,6 +43,7 @@ const TextAreaControl = observer(({ field, model }) => (
       onInput={model.handleChange}
       value={model.values[field]}
       onBlur={model.handleBlur}
+      onFocus={model.handleFocus}
       defaultValue={model.values[field]}
     />
     {model.errors[field] && (

@@ -31,7 +31,7 @@ class Task(db.Model):
     status = db.Column(db.Enum(TaskStatus),
                        default=TaskStatus.pending)
 
-    created_on = db.Column(db.DateTime, server_default=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     def __str__(self):
         return self.name

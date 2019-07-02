@@ -1,6 +1,7 @@
 import { Component } from 'inferno';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
 import Processing from 'app/ui/Processing';
+import AsyncSelect from 'app/ui/AsyncSelect';
 
 interface TaskEditView {
   taskEditForm: any;
@@ -25,14 +26,18 @@ class TaskEditView extends Component<TaskEditView> {
         processing,
         isDisabled,
         values,
-        // getAssigneeLabel,
-        // getProjectLabel,
-        // assigneeOptions,
-        // projectOptions,
-        // updateAssignee,
-        // updateProject,
-        // loadAssigneeOptions,
-        // loadProjectOptions,
+
+        // assignee
+        getAssigneeLabel,
+        assigneeOptions,
+        updateAssignee,
+        loadAssigneeOptions,
+
+        // project
+        getProjectLabel,
+        projectOptions,
+        updateProject,
+        loadProjectOptions,
       },
     } = this.props;
 
@@ -50,7 +55,7 @@ class TaskEditView extends Component<TaskEditView> {
                 <label className="label">Название</label>
                 <TaskEditField control="input" field="name" />
               </div>
-              {/* <div className="field">
+              <div className="field">
                 <label className="label">Исполнитель задачи</label>
                 <AsyncSelect
                   isMulti={false}
@@ -61,8 +66,8 @@ class TaskEditView extends Component<TaskEditView> {
                   loadOptions={loadAssigneeOptions}
                   name="assignee"
                 />
-              </div> */}
-              {/* <div className="field">
+              </div>
+              <div className="field">
                 <label className="label">Проект</label>
                 <AsyncSelect
                   isMulti={false}
@@ -73,7 +78,7 @@ class TaskEditView extends Component<TaskEditView> {
                   loadOptions={loadProjectOptions}
                   name="project"
                 />
-              </div> */}
+              </div>
             </div>
             <div className="column">
               <div className="field">
