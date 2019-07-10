@@ -12,6 +12,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const fuse = FuseBox.init({
   useTypescriptCompiler: true,
+  hash: true,
   sourceMaps: { project: true, vendor: true, inline: true },
   debug: 'true',
   homeDir: 'src',
@@ -32,12 +33,6 @@ const fuse = FuseBox.init({
     before: [TsTransformInferno()],
   },
 });
-
-// fuse.register('font-awesome', {
-//   homeDir: 'node_modules/@fortawesome/fontawesome-free/css',
-//   main: 'all.css',
-//   instructions: 'font-awesome',
-// });
 
 // run dev server
 if (!isProduction) {
