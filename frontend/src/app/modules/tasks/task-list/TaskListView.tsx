@@ -2,6 +2,7 @@ import Processing from 'app/ui/Processing';
 import { Link } from 'inferno-router';
 import { Component } from 'inferno';
 import Pagination from 'app/ui/Pagination';
+import TaskStatus from '../components/TaskStatus';
 
 interface TaskListProps {
   taskList: any;
@@ -42,12 +43,13 @@ class TaskListView extends Component<TaskListProps> {
                 <th>Название</th>
                 <td>Создатель</td>
                 <td>Описание</td>
+                <td>Статус</td>
                 <td>Действия</td>
               </tr>
             </thead>
 
             <tbody>
-              {items.map(({ id, name, description, creator }) => (
+              {items.map(({ id, name, description, creator, status }) => (
                 <tr key={id}>
                   <th>{id}</th>
                   <td>
@@ -58,7 +60,12 @@ class TaskListView extends Component<TaskListProps> {
                       {creator.first_name} {creator.last_name}
                     </Link>
                   </td>
+
                   <td>{description}</td>
+
+                  <td>
+                    <TaskStatus status={status} />
+                  </td>
                   <td>
                     <div className="is-grouped field">
                       <div className="control">
@@ -82,7 +89,7 @@ class TaskListView extends Component<TaskListProps> {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan={5}>
+                <td colSpan={6}>
                   <Pagination pagination={pagination} pageSet={pageSet} />
                 </td>
               </tr>

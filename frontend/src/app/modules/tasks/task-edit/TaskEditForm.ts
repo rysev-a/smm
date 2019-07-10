@@ -99,6 +99,8 @@ class TaskEditForm extends Form {
       description: values.description,
       assignee: values.assignee.id,
       project: values.project.id,
+      status: values.status,
+      tag: values.tag,
     };
   };
 

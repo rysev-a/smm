@@ -7,7 +7,8 @@
     "**/node_modules": true,
     "**/build": true,
     "**/public": true,
-    "**/.fusebox": true
+    "**/.fusebox": true,
+    "**/.idea": true
   },
   "editor.rulers": [80],
   "editor.formatOnSave": true,

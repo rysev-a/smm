@@ -79,6 +79,7 @@ class TaskCreateForm extends Form {
     description: '',
     assignee: {},
     project: {},
+    tag: 'content',
   });
 }
 

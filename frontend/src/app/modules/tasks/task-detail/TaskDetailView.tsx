@@ -1,6 +1,8 @@
-import Processing from 'app/ui/Processing';
 import { Component } from 'inferno';
 import * as Moment from 'moment';
+import Processing from 'app/ui/Processing';
+import TaskStatus from '../components/TaskStatus';
+import { formatTagMessge } from '../taskUtils';
 
 interface TaskDetailViewProps {
   taskDetailModel: any;
@@ -19,7 +21,17 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
   render() {
     const {
       taskDetailModel: {
-        data: { id, name, description, project, creator, assignee, created_at },
+        data: {
+          id,
+          name,
+          description,
+          project,
+          creator,
+          assignee,
+          created_at,
+          status,
+          tag,
+        },
         editTask,
         loaded,
         processing,
@@ -47,36 +59,48 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
           <div className="container">
             {loaded && (
               <div className="content">
-                <h2 className="is-size-4 title has-text-weight-normal">
-                  Создатель
-                </h2>
-                <p>
-                  <span className="is-size-5">
-                    {creator.first_name} {creator.last_name}
-                  </span>
-                </p>
-                <h2 className="is-size-4 title has-text-weight-normal">
-                  Исполнитель
-                </h2>
-                <p>
-                  <span className="is-size-5">
-                    {assignee.first_name} {assignee.last_name}
-                  </span>
-                </p>
-                <h2 className="is-size-4 title has-text-weight-normal">
-                  Проект
-                </h2>
-                <p>
-                  <span className="is-size-5">{project.name}</span>
-                </p>
-                <h2 className="is-size-4 title has-text-weight-normal">
-                  Описание
-                </h2>
-                <p>{description}</p>
-                <h2 className="is-size-4 title has-text-weight-normal">
-                  Дата создания
-                </h2>
-                <p>{Moment(created_at).format('DD-MM-YYYY')}</p>
+                <div className="box">
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Создатель
+                  </h2>
+                  <p>
+                    <span className="is-size-5">
+                      {creator.first_name} {creator.last_name}
+                    </span>
+                  </p>
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Исполнитель
+                  </h2>
+                  <p>
+                    <span className="is-size-5">
+                      {assignee.first_name} {assignee.last_name}
+                    </span>
+                  </p>
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Проект
+                  </h2>
+                  <p>
+                    <span className="is-size-5">{project.name}</span>
+                  </p>
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Описание
+                  </h2>
+                  <p>{description}</p>
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Дата создания
+                  </h2>
+                  <p>{Moment(created_at).format('DD-MM-YYYY')}</p>
+
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Тип задачи
+                  </h2>
+                  <p>{formatTagMessge(tag)}</p>
+
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Статус
+                  </h2>
+                  <TaskStatus status={status} />
+                </div>
                 <div className="buttons">
                   <a className="button is-primary" onClick={editTask}>
                     Редактировать

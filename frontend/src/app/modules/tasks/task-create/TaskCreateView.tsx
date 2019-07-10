@@ -2,6 +2,7 @@ import Processing from 'app/ui/Processing';
 import AsyncSelect from 'app/ui/AsyncSelect';
 import { Component } from 'inferno';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
+import { formatTagMessge } from '../taskUtils';
 
 interface TaskCreateViewProps {
   taskCreateForm: any;
@@ -19,6 +20,7 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
     const {
       taskCreateForm: {
         handleSubmit,
+        handleChange,
         processing,
         isDisabled,
         values,
@@ -70,6 +72,23 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
                   loadOptions={loadProjectOptions}
                   name="project"
                 />
+              </div>
+              <div className="field">
+                <label className="label">Тип задачи</label>
+                <div className="select">
+                  <select
+                    name="tag"
+                    onChange={handleChange}
+                    value={values.tag && values.tag.replace('TaskTag.', '')}>
+                    {['content', 'email', 'call', 'advertisement'].map(
+                      taskTag => (
+                        <option value={taskTag}>
+                          {formatTagMessge(taskTag)}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
               </div>
             </div>
             <div className="column">

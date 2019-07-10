@@ -51,7 +51,9 @@ class TaskUpdate(Resource):
             'assignee_id': request.json.get('assignee'),
             'project_id': request.json.get('project'),
             'name': request.json.get('name'),
-            'description': request.json.get('description')
+            'description': request.json.get('description'),
+            'status': request.json.get('status'),
+            'tag': request.json.get('tag'),
         })
         db.session.commit()
         return marshal(query.first(), task_detail_fields)

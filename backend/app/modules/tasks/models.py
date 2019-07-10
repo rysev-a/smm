@@ -11,6 +11,13 @@ class TaskStatus(enum.Enum):
     fail = 4
 
 
+class TaskTag(enum.Enum):
+    content = 1
+    call = 2
+    email = 3
+    advertisement = 4
+
+
 class Task(db.Model):
     __tablename__ = 'tasks'
 
@@ -30,6 +37,9 @@ class Task(db.Model):
 
     status = db.Column(db.Enum(TaskStatus),
                        default=TaskStatus.pending)
+
+    tag = db.Column(db.Enum(TaskTag),
+                    default=TaskTag.content)
 
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
