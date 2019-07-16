@@ -1,3 +1,6 @@
+import base64
+from os.path import dirname, join
+from flask import current_app
 from flask_restful import Resource, request, marshal
 from flask_login import current_user
 from app.core.crud import ListResource, DetailResource
@@ -19,10 +22,6 @@ class TaskDetail(DetailResource):
 
 class TaskCreate(Resource):
     def post(self):
-
-        if not task_validator(request.json):
-            print(task_validator.errors)
-
         task_with_exists_name = Task.query.filter(
             Task.name == request.json['name']).first()
 
@@ -34,13 +33,32 @@ class TaskCreate(Resource):
             assignee_id=request.json.get('assignee'),
             project_id=request.json.get('project'),
             name=request.json.get('name'),
-            description=request.json.get('description')
+            description=request.json.get('description'),
+            attached_file=self.upload_file(request),
+
         )
 
         db.session.add(task)
         db.session.commit()
 
         return marshal(task, task_detail_fields)
+
+    def upload_file(self, request):
+        if not request.json.get('file'):
+            return ''
+
+        upload_path = join(dirname(current_app.root_path), 'upload')
+
+        file_source = (request.json.get('file').get('base64'))
+        file_source = base64.b64decode(file_source)
+
+        file_name = request.json.get('file').get('name')
+        file_path = join(upload_path, file_name)
+
+        new_file = open(file_path, 'wb')
+        new_file.write(file_source)
+
+        return file_name
 
 
 class TaskUpdate(Resource):

@@ -2,6 +2,7 @@ import { Component } from 'inferno';
 import * as Moment from 'moment';
 import Processing from 'app/ui/Processing';
 import TaskStatus from '../components/TaskStatus';
+import TaskAttachedFile from '../components/TaskAttachedFile';
 import { formatTagMessge } from '../taskUtils';
 
 interface TaskDetailViewProps {
@@ -31,6 +32,7 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
           created_at,
           status,
           tag,
+          attached_file,
         },
         editTask,
         loaded,
@@ -100,6 +102,7 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
                     Статус
                   </h2>
                   <TaskStatus status={status} />
+                  <TaskAttachedFile attachedFile={attached_file} />
                 </div>
                 <div className="buttons">
                   <a className="button is-primary" onClick={editTask}>

@@ -22,7 +22,7 @@ const fuse = FuseBox.init({
     WebIndexPlugin({ template: 'src/assets/index.html' }),
     [
       CSSResourcePlugin({
-        dist: 'build/css-resources',
+        dist: './build/css-resources',
       }),
       CSSPlugin(),
     ],

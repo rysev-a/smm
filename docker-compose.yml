@@ -25,7 +25,9 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
+      - ./public/:/upload
       - ./fixtures:/fixtures
+
     networks:
       - db_nw
       - web_nw

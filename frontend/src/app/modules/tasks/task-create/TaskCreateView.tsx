@@ -19,6 +19,7 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
   render() {
     const {
       taskCreateForm: {
+        attachFile,
         handleSubmit,
         handleChange,
         processing,
@@ -60,6 +61,28 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
                   loadOptions={loadAssigneeOptions}
                   name="assignee"
                 />
+              </div>
+              <div className="field">
+                <div class="file has-name">
+                  <label class="file-label">
+                    <input
+                      onChange={attachFile}
+                      class="file-input"
+                      type="file"
+                      name="resume"
+                    />
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload" />
+                      </span>
+                      <span class="file-label">Прикрепить файл</span>
+                    </span>
+
+                    {values.file && (
+                      <span class="file-name">{values.file.name}</span>
+                    )}
+                  </label>
+                </div>
               </div>
               <div className="field">
                 <label className="label">Проект</label>

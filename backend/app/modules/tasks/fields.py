@@ -35,6 +35,7 @@ task_detail_fields = {
     'creator': fields.Nested(user_fields),
     'assignee': fields.Nested(user_fields),
     'created_at': fields.String,
+    'attached_file': fields.String,
     'status': fields.String(
         attribute=lambda task:
         str(task.status).replace('TaskStatus.', '')),

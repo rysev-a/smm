@@ -41,6 +41,7 @@ class Task(db.Model):
     tag = db.Column(db.Enum(TaskTag),
                     default=TaskTag.content)
 
+    attached_file = db.Column(db.String(length=128))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     def __str__(self):

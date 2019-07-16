@@ -31,5 +31,6 @@
   },
   "[css]": {
     "editor.tabSize": 2
-  }
+  },
+  "python.pythonPath": "/usr/bin/python3.7"
 }

@@ -71,6 +71,7 @@ class TaskCreateForm extends Form {
       description: values.description,
       assignee: values.assignee.id,
       project: values.project.id,
+      file: values.file,
     };
   };
 
@@ -80,7 +81,26 @@ class TaskCreateForm extends Form {
     assignee: {},
     project: {},
     tag: 'content',
+    file: null,
   });
+
+  attachFile = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      let encoded = reader.result.replace(/^data:(.*;base64,)?/, '');
+      if (encoded.length % 4 > 0) {
+        encoded += '='.repeat(4 - (encoded.length % 4));
+      }
+
+      this.values['file'] = {
+        name: file.name,
+        base64: encoded,
+      };
+    };
+  };
 }
 
 export default TaskCreateForm;

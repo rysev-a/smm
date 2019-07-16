@@ -17,3 +17,5 @@ MODULES = [
     'account',
     'cypress',
 ]
+
+UPLOAD_FOLDER = 'uploads'
