@@ -56,7 +56,7 @@ class TaskListView extends Component<TaskListProps> {
                     <Link to={`/tasks/${id}`}>{name}</Link>
                   </td>
                   <td>
-                    <Link to={`/tasks/${creator.id}`}>
+                    <Link to={`/users/${creator.id}`}>
                       {creator.first_name} {creator.last_name}
                     </Link>
                   </td>
