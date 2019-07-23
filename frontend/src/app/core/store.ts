@@ -5,6 +5,7 @@ import TaskCreateForm from 'app/modules/tasks/task-create/TaskCreateForm';
 import TaskDetailModel from 'app/modules/tasks/task-detail/TaskDetailModel';
 import TaskListModel from 'app/modules/tasks/task-list/TaskListModel';
 import TaskEditForm from 'app/modules/tasks/task-edit/TaskEditForm';
+import CommentListModel from 'app/modules/comments/comment-list/CommentListModel';
 
 class ApplicationStore {
   userDetailModel: UserDetailModel;
@@ -14,6 +15,7 @@ class ApplicationStore {
   taskDetailModel: TaskDetailModel;
   taskListModel: TaskListModel;
   taskEditForm: TaskEditForm;
+  commentListModel: CommentListModel;
 
   constructor() {
     this.userDetailModel = new UserDetailModel();
@@ -23,6 +25,7 @@ class ApplicationStore {
     this.taskDetailModel = new TaskDetailModel();
     this.taskListModel = new TaskListModel();
     this.taskEditForm = new TaskEditForm();
+    this.commentListModel = new CommentListModel();
   }
 }
 

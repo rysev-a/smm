@@ -17,12 +17,15 @@ class TaskDetailModel {
   @observable data = defaultTaskDetailData();
 
   @action.bound
-  load(taskId) {
+  load(taskId, commentListModel) {
     this.processing = true;
 
     taskApi.detail
       .get(taskId)
-      .then(this.onSuccess)
+      .then(response => {
+        this.onSuccess(response);
+        commentListModel.initialize(response.data.comments, taskId);
+      })
       .catch(() => {
         this.processing = false;
       });

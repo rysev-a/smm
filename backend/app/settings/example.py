@@ -15,6 +15,9 @@ MODULES = [
     'ping',
     'users',
     'account',
+    'projects',
+    'tasks',
+    'comments',
     'cypress',
 ]
 

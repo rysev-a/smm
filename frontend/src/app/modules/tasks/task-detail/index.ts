@@ -4,6 +4,7 @@ import TaskDetailView from './TaskDetailView';
 
 export default withRouter(
   inject(({ store }) => ({
+    commentListModel: store.commentListModel,
     taskDetailModel: store.taskDetailModel,
   }))(observer(TaskDetailView))
 );

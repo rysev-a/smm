@@ -1,12 +1,19 @@
 import { Component } from 'inferno';
+import { style } from 'typestyle';
 import * as Moment from 'moment';
 import Processing from 'app/ui/Processing';
 import TaskStatus from '../components/TaskStatus';
 import TaskAttachedFile from '../components/TaskAttachedFile';
 import { formatTagMessge } from '../taskUtils';
+import CommentList from 'app/modules/comments/comment-list';
+
+const TaskDetailButtonsClassName = style({
+  marginTop: '20px',
+});
 
 interface TaskDetailViewProps {
   taskDetailModel: any;
+  commentListModel: any;
   match: any;
 }
 
@@ -16,7 +23,10 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
   }
 
   componentDidMount() {
-    this.props.taskDetailModel.load(this.props.match.params.taskId);
+    this.props.taskDetailModel.load(
+      this.props.match.params.taskId,
+      this.props.commentListModel
+    );
   }
 
   render() {
@@ -103,14 +113,18 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
                   </h2>
                   <TaskStatus status={status} />
                   <TaskAttachedFile attachedFile={attached_file} />
-                </div>
-                <div className="buttons">
-                  <a className="button is-primary" onClick={editTask}>
-                    Редактировать
-                  </a>
+                  <div className={`buttons ${TaskDetailButtonsClassName}`}>
+                    <a className="button is-primary" onClick={editTask}>
+                      Редактировать
+                    </a>
+                  </div>
                 </div>
               </div>
             )}
+          </div>
+
+          <div className="section">
+            <CommentList />
           </div>
         </section>
       </div>

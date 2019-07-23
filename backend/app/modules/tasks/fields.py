@@ -12,6 +12,13 @@ project_fields = {
     'name': fields.String,
 }
 
+comment_fields = {
+    'id': fields.Integer,
+    'content': fields.String,
+    'created_at': fields.String,
+    'user': fields.Nested(user_fields),
+}
+
 task_list_fields = {
     'id': fields.Integer,
     'name': fields.String,
@@ -39,6 +46,9 @@ task_detail_fields = {
     'status': fields.String(
         attribute=lambda task:
         str(task.status).replace('TaskStatus.', '')),
+    'comments': fields.List(
+        fields.Nested(comment_fields)
+    ),
     'tag': fields.String(
         attribute=lambda task:
         str(task.tag).replace('TaskTag.', '')),
