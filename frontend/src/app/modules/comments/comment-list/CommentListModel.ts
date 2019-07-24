@@ -39,6 +39,12 @@ class CommentListModel {
       });
   };
 
+  remove = commentId => {
+    commentApi.list.delete(commentId).then(() => {
+      this.items = this.items.filter(comment => comment.id !== commentId);
+    });
+  };
+
   reset = () => {
     this.items = [];
   };

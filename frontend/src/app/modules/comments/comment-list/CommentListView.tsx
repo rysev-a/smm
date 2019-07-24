@@ -3,14 +3,22 @@ import FieldFactory from 'app/core/plugins/Form/FieldFactory';
 
 const CommentListField = FieldFactory('commentListModel');
 
-const CommentItem = ({ comment }) => (
-  <article class="message is-small">
-    <div class="message-header">
+const CommentItem = ({ comment, remove }) => (
+  <article className="message is-small">
+    <div className="message-header">
       <p>
         {comment.user.email} - {moment(comment.created_at).format('DD-MM-YYYY')}
       </p>
+      <a
+        className="button is-pulled-right is-small is-danger"
+        onClick={() => remove(comment.id)}>
+        <span>Удалить</span>
+        <span className="icon is-small">
+          <i className="fas fa-times" />
+        </span>
+      </a>
     </div>
-    <div class="message-body">{comment.content}</div>
+    <div className="message-body">{comment.content}</div>
   </article>
 );
 
@@ -21,7 +29,7 @@ const CommentListView = ({ commentList }) => (
         <h3 className="is-size-3">Комментарии</h3>
         <div className="comments">
           {commentList.items.map(comment => (
-            <CommentItem comment={comment} />
+            <CommentItem comment={comment} remove={commentList.remove} />
           ))}
         </div>
       </div>
