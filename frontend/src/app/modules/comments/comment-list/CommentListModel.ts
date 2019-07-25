@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 import { commentApi } from 'app/services/api';
 import accountModel from 'app/modules/account/AccountModel';
+import * as moment from 'moment';
 
 class CommentListModel {
   taskId: null;
@@ -10,7 +11,9 @@ class CommentListModel {
   @observable newComment = null;
   @observable values = {
     content: '',
+    edited: '',
   };
+  @observable edited = null;
 
   @observable errors = {};
 
@@ -45,8 +48,32 @@ class CommentListModel {
     });
   };
 
+  edit = commentId => {
+    this.edited = commentId;
+    this.values.edited = this.items.find(
+      comment => comment.id === commentId
+    ).content;
+  };
+
   reset = () => {
     this.items = [];
+  };
+
+  save = () => {
+    commentApi.detail
+      .put({
+        id: this.edited,
+        values: {
+          content: this.values.edited,
+          created_at: moment().format('YYYY-MM-DD HH:mm'),
+        },
+      })
+      .then(({ data }) => {
+        this.items = this.items.map(comment =>
+          comment.id === data.id ? data : comment
+        );
+        this.edited = null;
+      });
   };
 }
 
