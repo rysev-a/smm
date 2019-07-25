@@ -3,6 +3,7 @@ import { Link } from 'inferno-router';
 import { Component } from 'inferno';
 import Pagination from 'app/ui/Pagination';
 import TaskStatus from '../components/TaskStatus';
+import TaskPriority from '../components/TaskPriority';
 
 interface TaskListProps {
   taskList: any;
@@ -44,52 +45,58 @@ class TaskListView extends Component<TaskListProps> {
                 <td>Создатель</td>
                 <td>Описание</td>
                 <td>Статус</td>
+                <td>Приоритет</td>
                 <td>Действия</td>
               </tr>
             </thead>
 
             <tbody>
-              {items.map(({ id, name, description, creator, status }) => (
-                <tr key={id}>
-                  <th>{id}</th>
-                  <td>
-                    <Link to={`/tasks/${id}`}>{name}</Link>
-                  </td>
-                  <td>
-                    <Link to={`/users/${creator.id}`}>
-                      {creator.first_name} {creator.last_name}
-                    </Link>
-                  </td>
+              {items.map(
+                ({ id, name, description, creator, status, priority }) => (
+                  <tr key={id}>
+                    <th>{id}</th>
+                    <td>
+                      <Link to={`/tasks/${id}`}>{name}</Link>
+                    </td>
+                    <td>
+                      <Link to={`/users/${creator.id}`}>
+                        {creator.first_name} {creator.last_name}
+                      </Link>
+                    </td>
 
-                  <td>{description}</td>
+                    <td>{description}</td>
 
-                  <td>
-                    <TaskStatus status={status} />
-                  </td>
-                  <td>
-                    <div className="is-grouped field">
-                      <div className="control">
-                        <a
-                          className="button is-primary is-small"
-                          onClick={() => editTask(id)}>
-                          Редактировать
-                        </a>
+                    <td>
+                      <TaskStatus status={status} />
+                    </td>
+                    <td>
+                      <TaskPriority priority={priority} />
+                    </td>
+                    <td>
+                      <div className="is-grouped field">
+                        <div className="control">
+                          <a
+                            className="button is-primary is-small"
+                            onClick={() => editTask(id)}>
+                            Редактировать
+                          </a>
+                        </div>
+                        <div className="control">
+                          <a
+                            className="button is-danger is-small"
+                            onClick={() => remove(id)}>
+                            Удалить
+                          </a>
+                        </div>
                       </div>
-                      <div className="control">
-                        <a
-                          className="button is-danger is-small"
-                          onClick={() => remove(id)}>
-                          Удалить
-                        </a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan={6}>
+                <td colSpan={7}>
                   <Pagination pagination={pagination} pageSet={pageSet} />
                 </td>
               </tr>

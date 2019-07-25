@@ -27,15 +27,14 @@ class TaskCreate(Resource):
 
         if task_with_exists_name:
             return {'message': {'name': 'TASK_NAME_ALREADY_EXIST'}}, 400
-
         task = Task(
             creator_id=current_user.id,
             assignee_id=request.json.get('assignee'),
             project_id=request.json.get('project'),
             name=request.json.get('name'),
             description=request.json.get('description'),
+            priority=request.json.get('priority'),
             attached_file=self.upload_file(request),
-
         )
 
         db.session.add(task)
@@ -72,6 +71,7 @@ class TaskUpdate(Resource):
             'description': request.json.get('description'),
             'status': request.json.get('status'),
             'tag': request.json.get('tag'),
+            'priority': request.json.get('priority'),
         })
         db.session.commit()
         return marshal(query.first(), task_detail_fields)

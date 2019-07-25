@@ -141,6 +141,7 @@ class AsyncSelect extends Component<AsyncSelectProps, AsyncSelectState> {
           />
           <input
             ref={this.storeRef}
+            autoComplete="off"
             onFocus={this.onInputFocus}
             onBlur={this.onInputBlur}
             className={getInputClassName()}

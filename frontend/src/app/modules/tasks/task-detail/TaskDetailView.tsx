@@ -6,6 +6,7 @@ import TaskStatus from '../components/TaskStatus';
 import TaskAttachedFile from '../components/TaskAttachedFile';
 import { formatTagMessge } from '../taskUtils';
 import CommentList from 'app/modules/comments/comment-list';
+import TaskPriority from '../components/TaskPriority';
 
 const TaskDetailButtonsClassName = style({
   marginTop: '20px',
@@ -42,6 +43,7 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
           created_at,
           status,
           tag,
+          priority,
           attached_file,
         },
         editTask,
@@ -112,6 +114,12 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
                     Статус
                   </h2>
                   <TaskStatus status={status} />
+
+                  <h2 className="is-size-4 title has-text-weight-normal">
+                    Приоритет
+                  </h2>
+                  <TaskPriority priority={priority} />
+
                   <TaskAttachedFile attachedFile={attached_file} />
                   <div className={`buttons ${TaskDetailButtonsClassName}`}>
                     <a className="button is-primary" onClick={editTask}>

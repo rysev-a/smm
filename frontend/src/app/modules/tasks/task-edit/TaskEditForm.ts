@@ -101,6 +101,7 @@ class TaskEditForm extends Form {
       project: values.project.id,
       status: values.status,
       tag: values.tag,
+      priority: values.priority,
     };
   };
 
@@ -108,6 +109,7 @@ class TaskEditForm extends Form {
     name: '',
     description: '',
     assignee: {},
+    priority: '',
     project: {},
   });
 }

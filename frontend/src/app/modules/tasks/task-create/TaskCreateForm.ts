@@ -72,6 +72,7 @@ class TaskCreateForm extends Form {
       assignee: values.assignee.id,
       project: values.project.id,
       file: values.file,
+      priority: values.priority,
     };
   };
 
@@ -81,6 +82,7 @@ class TaskCreateForm extends Form {
     assignee: {},
     project: {},
     tag: 'content',
+    priority: 'low',
     file: null,
   });
 

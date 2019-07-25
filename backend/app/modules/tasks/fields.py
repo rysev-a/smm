@@ -32,6 +32,9 @@ task_list_fields = {
     'tag': fields.String(
         attribute=lambda task:
         str(task.tag).replace('TaskTag.', '')),
+    'priority': fields.String(
+        attribute=lambda task:
+        str(task.priority).replace('TaskPriority.', '')),
 }
 
 task_detail_fields = {
@@ -52,4 +55,7 @@ task_detail_fields = {
     'tag': fields.String(
         attribute=lambda task:
         str(task.tag).replace('TaskTag.', '')),
+    'priority': fields.String(
+        attribute=lambda task:
+        str(task.priority).replace('TaskPriority.', '')),
 }

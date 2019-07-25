@@ -3,6 +3,7 @@
 /backend/app/settings/development.py
 /backend/app/settings/production.py
 /backend/app/settings/test.py
+/backend/upload
 
 /backend/shell.py
 

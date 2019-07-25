@@ -18,6 +18,12 @@ class TaskTag(enum.Enum):
     advertisement = 4
 
 
+class TaskPriority(enum.Enum):
+    low = 1
+    medium = 2
+    high = 3
+
+
 class Task(db.Model):
     __tablename__ = 'tasks'
 
@@ -40,6 +46,9 @@ class Task(db.Model):
 
     tag = db.Column(db.Enum(TaskTag),
                     default=TaskTag.content)
+
+    priority = db.Column(db.Enum(TaskPriority),
+                         default=TaskPriority.low)
 
     attached_file = db.Column(db.String(length=128))
     created_at = db.Column(db.DateTime, server_default=db.func.now())

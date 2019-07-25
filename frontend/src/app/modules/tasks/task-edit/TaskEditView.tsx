@@ -2,7 +2,11 @@ import { Component } from 'inferno';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
 import Processing from 'app/ui/Processing';
 import AsyncSelect from 'app/ui/AsyncSelect';
-import { formatStatusMessage, formatTagMessge } from '../taskUtils';
+import {
+  formatStatusMessage,
+  formatTagMessge,
+  formatPriorityMessage,
+} from '../taskUtils';
 
 interface TaskEditView {
   taskEditForm: any;
@@ -115,6 +119,25 @@ class TaskEditView extends Component<TaskEditView> {
                         </option>
                       )
                     )}
+                  </select>
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Приоритет задачи</label>
+                <div className="select">
+                  <select
+                    name="priority"
+                    onChange={handleChange}
+                    value={
+                      values.priority &&
+                      values.priority.replace('TaskPriority.', '')
+                    }>
+                    {['low', 'medium', 'high'].map(taskPriority => (
+                      <option value={taskPriority}>
+                        {formatPriorityMessage(taskPriority)}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

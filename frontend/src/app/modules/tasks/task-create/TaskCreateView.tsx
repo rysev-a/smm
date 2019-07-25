@@ -2,7 +2,7 @@ import Processing from 'app/ui/Processing';
 import AsyncSelect from 'app/ui/AsyncSelect';
 import { Component } from 'inferno';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
-import { formatTagMessge } from '../taskUtils';
+import { formatTagMessge, formatPriorityMessage } from '../taskUtils';
 
 interface TaskCreateViewProps {
   taskCreateForm: any;
@@ -110,6 +110,25 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
                         </option>
                       )
                     )}
+                  </select>
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Приоритет задачи</label>
+                <div className="select">
+                  <select
+                    name="priority"
+                    onChange={handleChange}
+                    value={
+                      values.priority &&
+                      values.priority.replace('TaskPriority.', '')
+                    }>
+                    {['low', 'medium', 'high'].map(taskPriority => (
+                      <option value={taskPriority}>
+                        {formatPriorityMessage(taskPriority)}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

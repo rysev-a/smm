@@ -8,6 +8,16 @@ export const formatStatusMessage = status => {
   return statusMessageMap[status];
 };
 
+export const formatPriorityMessage = priority => {
+  const priorityMessageMap = {
+    low: 'Низкий',
+    medium: 'Средний',
+    high: 'Высокий',
+  };
+
+  return priorityMessageMap[priority];
+};
+
 export const formatTagMessge = tag => {
   const tagMessageMap = {
     content: 'Выложить контент',
@@ -28,4 +38,14 @@ export const getTaskStatusClassName = status => {
   };
 
   return statusClassNameMap[status];
+};
+
+export const getTaskPriorityClassName = status => {
+  const priorityClassNameMap = {
+    low: 'is-info',
+    medium: 'is-primary',
+    high: 'is-danger',
+  };
+
+  return priorityClassNameMap[status];
 };
