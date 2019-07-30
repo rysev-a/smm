@@ -15,5 +15,7 @@ class Comment(db.Model):
 
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
+    pinned = db.Column(db.Boolean, default=False)
+
     def __str__(self):
         return self.content

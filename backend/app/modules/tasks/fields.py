@@ -17,6 +17,7 @@ comment_fields = {
     'content': fields.String,
     'created_at': fields.String,
     'user': fields.Nested(user_fields),
+    'pinned': fields.Boolean
 }
 
 task_list_fields = {

@@ -1,10 +1,15 @@
 import * as moment from 'moment';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
+import classNames from 'classnames';
+import { pinnedClassName } from './CommentListClassNames';
 
 const CommentListField = FieldFactory('commentListModel');
 
 const CommentItem = ({ comment, remove, edit }) => (
-  <article className="message is-small">
+  <article
+    className={classNames('message is-small', {
+      [pinnedClassName]: comment.pinned,
+    })}>
     <div className="message-header">
       <p>
         {comment.user.email} -{' '}
@@ -33,7 +38,14 @@ const CommentItem = ({ comment, remove, edit }) => (
   </article>
 );
 
-const CommentEditForm = ({ comment, handleChange, edited, save }) => (
+const CommentEditForm = ({
+  comment,
+  handleChange,
+  togglePinned,
+  editedPinned,
+  edited,
+  save,
+}) => (
   <article className="message is-small">
     <div className="message-header">
       <p>
@@ -50,6 +62,19 @@ const CommentEditForm = ({ comment, handleChange, edited, save }) => (
         </a>
       </div>
     </div>
+
+    <div className="control">
+      <label class="checkbox">
+        <input
+          type="checkbox"
+          name="editedPinned"
+          checked={editedPinned}
+          onChange={togglePinned}
+        />
+        Закрепить комментарий
+      </label>
+    </div>
+
     <textarea
       onInput={handleChange}
       name="edited"
@@ -65,13 +90,15 @@ const CommentListView = ({ commentList }) => (
       <div className="comment-list">
         <h3 className="is-size-3">Комментарии</h3>
         <div className="comments">
-          {commentList.items.map(comment => {
+          {commentList.sortedItems.map(comment => {
             if (comment.id === commentList.edited) {
               return (
                 <CommentEditForm
                   save={commentList.save}
                   comment={comment}
                   edited={commentList.values.edited}
+                  togglePinned={commentList.togglePinned}
+                  editedPinned={commentList.values.editedPinned}
                   handleChange={commentList.handleChange}
                 />
               );
@@ -90,12 +117,19 @@ const CommentListView = ({ commentList }) => (
     )}
     <div className="box is-small">
       <div className="form">
+        <div className="control">
+          <label class="checkbox">
+            <input
+              type="checkbox"
+              name="newPinned"
+              checked={commentList.values.newPinned}
+              onChange={commentList.togglePinned}
+            />
+            Закрепить комментарий
+          </label>
+        </div>
         <CommentListField field="content" control="textarea" />
-        <button
-          className="button is-small"
-          onClick={() => {
-            commentList.submit();
-          }}>
+        <button className="button is-small" onClick={commentList.submit}>
           Добавить комментарий
         </button>
       </div>
