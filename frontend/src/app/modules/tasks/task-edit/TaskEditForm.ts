@@ -1,5 +1,5 @@
 import { observable } from 'mobx';
-import { map } from 'ramda';
+import * as moment from 'moment';
 
 import Form from 'app/core/plugins/Form/Form';
 import history from 'app/core/history';
@@ -42,6 +42,9 @@ class TaskEditForm extends Form {
       .get(taskId)
       .then(({ data }) => {
         this.values = data;
+        this.values.deadline = moment(data.deadline).format(
+          'YYYY-MM-DDTHH:mm:ss'
+        );
         this.processing = false;
       })
       .catch(() => {
@@ -101,6 +104,7 @@ class TaskEditForm extends Form {
       project: values.project.id,
       status: values.status,
       tag: values.tag,
+      deadline: values.deadline,
       priority: values.priority,
     };
   };
@@ -111,6 +115,7 @@ class TaskEditForm extends Form {
     assignee: {},
     priority: '',
     project: {},
+    deadline: null,
   });
 }
 

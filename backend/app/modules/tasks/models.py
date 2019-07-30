@@ -53,6 +53,8 @@ class Task(db.Model):
     attached_file = db.Column(db.String(length=128))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
+    deadline = db.Column(db.DateTime)
+
     comments = db.relationship('Comment')
 
     def __str__(self):

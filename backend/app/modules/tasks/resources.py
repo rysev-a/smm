@@ -33,6 +33,7 @@ class TaskCreate(Resource):
             project_id=request.json.get('project'),
             name=request.json.get('name'),
             description=request.json.get('description'),
+            deadline=request.json.get('deadline'),
             priority=request.json.get('priority'),
             attached_file=self.upload_file(request),
         )
@@ -72,6 +73,7 @@ class TaskUpdate(Resource):
             'status': request.json.get('status'),
             'tag': request.json.get('tag'),
             'priority': request.json.get('priority'),
+            'deadline': request.json.get('deadline'),
         })
         db.session.commit()
         return marshal(query.first(), task_detail_fields)

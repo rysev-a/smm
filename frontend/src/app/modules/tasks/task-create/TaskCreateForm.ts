@@ -73,6 +73,7 @@ class TaskCreateForm extends Form {
       project: values.project.id,
       file: values.file,
       priority: values.priority,
+      deadline: values.deadline,
     };
   };
 
@@ -81,6 +82,7 @@ class TaskCreateForm extends Form {
     description: '',
     assignee: {},
     project: {},
+    deadline: null,
     tag: 'content',
     priority: 'low',
     file: null,

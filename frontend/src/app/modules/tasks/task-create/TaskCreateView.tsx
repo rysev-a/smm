@@ -138,6 +138,14 @@ class TaskCreateView extends Component<TaskCreateViewProps> {
                 <label className="label">Описание</label>
                 <TaskEditField field="description" control="textarea" />
               </div>
+              <div className="field">
+                <label className="label">Срок завершения</label>
+                <TaskEditField
+                  control="input"
+                  field="deadline"
+                  type="datetime-local"
+                />
+              </div>
             </div>
           </div>
           <button

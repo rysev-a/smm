@@ -41,6 +41,7 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
           creator,
           assignee,
           created_at,
+          deadline,
           status,
           tag,
           priority,
@@ -104,6 +105,15 @@ class TaskDetailView extends Component<TaskDetailViewProps> {
                     Дата создания
                   </h2>
                   <p>{Moment(created_at).format('DD-MM-YYYY')}</p>
+
+                  {deadline && (
+                    <>
+                      <h2 className="is-size-4 title has-text-weight-normal">
+                        Срок завершения
+                      </h2>
+                      <p>{Moment(deadline).format('DD-MM-YYYY HH:mm')}</p>
+                    </>
+                  )}
 
                   <h2 className="is-size-4 title has-text-weight-normal">
                     Тип задачи
