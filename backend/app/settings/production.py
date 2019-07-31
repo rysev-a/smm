@@ -1,11 +1,11 @@
 DEBUG = True
 SECRET_KEY = '9%o=_oey@mu!jbsdfsdf*h8^3$*)hzffmi+13413sadfasf-*_ou'
 
-DB_NAME = 'database_name'
-DB_USER = 'database_user'
-DB_PASSWORD = 'database_password'
+DB_NAME = 'flaskapp_db'
+DB_USER = 'postgres'
+DB_PASSWORD = 'password'
 DB_PORT = '5432'
-DB_HOST = 'localhost'
+DB_HOST = 'db'
 DB_ENGINE = 'postgresql'
 
 SQLALCHEMY_DATABASE_URI = f'{DB_ENGINE}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'

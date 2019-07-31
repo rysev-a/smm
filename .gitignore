@@ -1,7 +1,6 @@
 **/.pytest_cache
 **/__pycache__
 /backend/app/settings/development.py
-/backend/app/settings/production.py
 /backend/app/settings/test.py
 /backend/upload
 
