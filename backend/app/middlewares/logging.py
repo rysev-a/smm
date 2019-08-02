@@ -26,7 +26,7 @@ def get_module_by_url(url):
 def init_logging_middleware(app):
     @app.before_request
     def before_request():
-        if current_user:
+        if current_user.is_authenticated:
             action = get_action(str(request.method))
 
             if action:
