@@ -26,17 +26,18 @@ def get_module_by_url(url):
 def init_logging_middleware(app):
     @app.before_request
     def before_request():
-        action = get_action(str(request.method))
+        if current_user:
+            action = get_action(str(request.method))
 
-        if action:
-            module = get_module_by_url(str(request.url_rule))
+            if action:
+                module = get_module_by_url(str(request.url_rule))
 
-            if module != 'logs':
-                log = Log(
-                    user_id=current_user.id,
-                    module=module,
-                    action=action
-                )
+                if module != 'logs':
+                    log = Log(
+                        user_id=current_user.id,
+                        module=module,
+                        action=action
+                    )
 
-                db.session.add(log)
-                db.session.commit()
+                    db.session.add(log)
+                    db.session.commit()
