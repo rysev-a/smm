@@ -49,6 +49,10 @@ const TopNavigation = observer(
         <Link to="/users" className="navbar-item">
           Пользователи
         </Link>
+
+        <Link to="/logging" className="navbar-item">
+          Действия
+        </Link>
       </div>
     )
 );

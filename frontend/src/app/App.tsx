@@ -31,6 +31,7 @@ import TaskEditPage from './pages/tasks/TaskEditPage';
 import TaskCreatePage from './pages/tasks/TaskCreatePage';
 import TaskDetailPage from './pages/tasks/TaskDetailPage';
 import TaskListPage from './pages/tasks/TaskListPage';
+import LoggingListPage from './pages/logging/LoggingListPage';
 
 inferno.render(
   <Provider store={store}>
@@ -67,6 +68,8 @@ inferno.render(
           <Route path="/tasks/:taskId/edit" exact component={TaskEditPage} />
         </Switch>
         <Route path="/account/settings" component={AccountSettingsPage} />
+
+        <Route path="/logging" component={LoggingListPage} />
       </main>
     </Router>
   </Provider>,

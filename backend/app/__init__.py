@@ -3,13 +3,9 @@ from app.core.database import db
 from app.core.api import api
 from app.core.migrate import migrate
 from app.core.auth import login_manager
-# from app.modules.users import init_users
-# from app.modules.ping import init_ping
-# from app.modules.account import init_account
-# from app.modules.projects import init_projects
-# from app.modules.cypress import init_cypress
 
 from app.modules import modules
+from app.middlewares import init_middlewares
 
 
 def create_app(settings='app.settings.development'):
@@ -21,13 +17,7 @@ def create_app(settings='app.settings.development'):
     migrate.init_app(app, db)
 
     modules.init_app(app)
-
-    # init modules and api
-    # init_users()
-    # init_ping()
-    # init_account()
-    # init_projects()
-    # init_cypress()
+    init_middlewares(app)
 
     api.init_app(app)
 
