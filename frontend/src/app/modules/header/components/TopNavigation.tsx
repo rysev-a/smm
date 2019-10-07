@@ -46,6 +46,22 @@ const TopNavigation = observer(
           </div>
         </div>
 
+        <div
+          className="navbar-item has-dropdown is-hoverable"
+          id="task-dropdown">
+          <Link to="/posts" className="navbar-link">
+            Посты
+          </Link>
+
+          <div className="navbar-dropdown">
+            <div className="post-create-item">
+              <Link to="/posts/create" className="navbar-item">
+                Создать пост
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <Link to="/users" className="navbar-item">
           Пользователи
         </Link>

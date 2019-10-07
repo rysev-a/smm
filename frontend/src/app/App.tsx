@@ -33,6 +33,9 @@ import TaskDetailPage from './pages/tasks/TaskDetailPage';
 import TaskListPage from './pages/tasks/TaskListPage';
 import LoggingListPage from './pages/logging/LoggingListPage';
 
+import PostListPage from './pages/posts/PostListPage';
+import PostCreatePage from './pages/posts/PostCreatePage';
+
 inferno.render(
   <Provider store={store}>
     <Router history={history}>
@@ -70,6 +73,8 @@ inferno.render(
         <Route path="/account/settings" component={AccountSettingsPage} />
 
         <Route path="/logging" component={LoggingListPage} />
+        <Route path="/posts" exact component={PostListPage} />
+        <Route path="/posts/create" exact component={PostCreatePage} />
       </main>
     </Router>
   </Provider>,
