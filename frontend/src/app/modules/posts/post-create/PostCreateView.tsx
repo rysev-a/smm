@@ -29,8 +29,6 @@ class TaskCreateView extends Component<PostCreateViewProps> {
       },
     } = this.props;
 
-    console.log(socialAccountOptions.items);
-
     return (
       <div className="create-post">
         <h1 className="is-size-1  title has-text-weight-normal title has-text-weight-normal">

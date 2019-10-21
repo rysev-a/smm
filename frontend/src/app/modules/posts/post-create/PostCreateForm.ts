@@ -35,6 +35,7 @@ class PostCreateForm extends Form {
       name: values.name,
       description: values.description,
       content: values.content,
+      social_account_id: values.socialAccount.id,
     };
   };
 
