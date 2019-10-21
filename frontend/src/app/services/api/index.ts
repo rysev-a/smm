@@ -5,3 +5,4 @@ export { taskApi } from './task';
 export { commentApi } from './comment';
 export { loggingApi } from './logging';
 export { postApi } from './post';
+export { socialAccountApi } from './social-account';

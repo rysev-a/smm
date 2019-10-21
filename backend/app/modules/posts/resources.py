@@ -1,8 +1,13 @@
 from flask_restful import Resource, request, marshal
 from app.core.crud import ListResource, DetailResource
 from app.core.database import db
-from .fields import post_detail_fields, post_list_fields
-from .models import Post
+from .fields import (
+    post_detail_fields,
+    post_list_fields,
+    social_account_detail_fields,
+    social_account_list_fields
+)
+from .models import Post, SocialAccount
 
 
 class PostList(ListResource):
@@ -22,3 +27,19 @@ class PostPublic(Resource):
         post.public()
 
         return marshal(post, post_detail_fields)
+
+
+class SocialAccountList(ListResource):
+    fields = social_account_list_fields
+    model = SocialAccount
+
+
+class SocialAccountDetail(DetailResource):
+    fields = social_account_detail_fields
+    model = SocialAccount
+
+
+class SocialAccountGetToken(Resource):
+    def get(self, id):
+        social_account = SocialAccount.query.get(id)
+        return social_account.get_token()

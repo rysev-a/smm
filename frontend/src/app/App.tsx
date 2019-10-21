@@ -36,6 +36,11 @@ import LoggingListPage from './pages/logging/LoggingListPage';
 import PostListPage from './pages/posts/PostListPage';
 import PostCreatePage from './pages/posts/PostCreatePage';
 
+import SocialAccountListPage from './pages/social-accounts/SocialAccountListPage';
+import SocialAccountDetailPage from './pages/social-accounts/SocialAccountDetailPage';
+import SocialAccountCreatePage from './pages/social-accounts/SocialAccountCreatePage';
+import SocialAccountEditPage from './pages/social-accounts/SocialAccountEditPage';
+
 inferno.render(
   <Provider store={store}>
     <Router history={history}>
@@ -75,6 +80,29 @@ inferno.render(
         <Route path="/logging" component={LoggingListPage} />
         <Route path="/posts" exact component={PostListPage} />
         <Route path="/posts/create" exact component={PostCreatePage} />
+
+        <Route
+          path="/social-accounts"
+          exact
+          component={SocialAccountListPage}
+        />
+        <Switch>
+          <Route
+            path="/social-accounts/create"
+            exact
+            component={SocialAccountCreatePage}
+          />
+          <Route
+            path="/social-accounts/:socialAccountId/edit"
+            exact
+            component={SocialAccountEditPage}
+          />
+          <Route
+            path="/social-accounts/:socialAccountId"
+            exact
+            component={SocialAccountDetailPage}
+          />
+        </Switch>
       </main>
     </Router>
   </Provider>,

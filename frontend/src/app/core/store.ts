@@ -20,6 +20,12 @@ import LoggingModel from 'app/modules/logging/LoggingModel';
 // posts
 import PostCreateForm from 'app/modules/posts/post-create/PostCreateForm';
 
+// social accounts
+import SocialAccountListModel from 'app/modules/social-accounts/social-account-list/SocialAccountListModel';
+import SocialAccountDetailModel from 'app/modules/social-accounts/social-account-detail/SocialAccountDetailModel';
+import SocialAccountCreateForm from 'app/modules/social-accounts/social-account-create/SocialAccountCreateForm';
+import SocialAccountEditForm from 'app/modules/social-accounts/social-account-edit/SocialAccountEditForm';
+
 class ApplicationStore {
   userDetailModel: UserDetailModel;
   projectDetailModel: ProjectDetailModel;
@@ -31,6 +37,10 @@ class ApplicationStore {
   commentListModel: CommentListModel;
   loggingModel: LoggingModel;
   postCreateForm: PostCreateForm;
+  socialAccountListModel: SocialAccountListModel;
+  socialAccountDetailModel: SocialAccountDetailModel;
+  socialAccountCreateForm: SocialAccountCreateForm;
+  socialAccountEditForm: SocialAccountEditForm;
 
   constructor() {
     this.userDetailModel = new UserDetailModel();
@@ -43,6 +53,10 @@ class ApplicationStore {
     this.commentListModel = new CommentListModel();
     this.loggingModel = new LoggingModel();
     this.postCreateForm = new PostCreateForm();
+    this.socialAccountListModel = new SocialAccountListModel();
+    this.socialAccountDetailModel = new SocialAccountDetailModel();
+    this.socialAccountCreateForm = new SocialAccountCreateForm();
+    this.socialAccountEditForm = new SocialAccountEditForm();
   }
 }
 

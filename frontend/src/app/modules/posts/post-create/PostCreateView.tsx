@@ -1,6 +1,7 @@
 import { Component } from 'inferno';
 import Processing from 'app/ui/Processing';
 import FieldFactory from 'app/core/plugins/Form/FieldFactory';
+import AsyncSelect from 'app/ui/AsyncSelect';
 
 interface PostCreateViewProps {
   postCreateForm: any;
@@ -18,12 +19,17 @@ class TaskCreateView extends Component<PostCreateViewProps> {
     const {
       postCreateForm: {
         handleSubmit,
-        handleChange,
+        getSocialAccountLabel,
+        loadSocialAccountOptions,
+        updateSocialAccount,
+        socialAccountOptions,
         processing,
         isDisabled,
         values,
       },
     } = this.props;
+
+    console.log(socialAccountOptions.items);
 
     return (
       <div className="create-post">
@@ -48,6 +54,20 @@ class TaskCreateView extends Component<PostCreateViewProps> {
                 <PostCreateField control="textarea" field="content" />
               </div>
             </div>
+
+            <div className="field">
+              <label className="label">Аккаунт для поста</label>
+              <AsyncSelect
+                isMulti={false}
+                getLabel={getSocialAccountLabel}
+                values={values['socialAccount']}
+                update={updateSocialAccount}
+                options={socialAccountOptions.items}
+                loadOptions={loadSocialAccountOptions}
+                name="socialAccount"
+              />
+            </div>
+
             <div className="column"></div>
           </div>
           <button

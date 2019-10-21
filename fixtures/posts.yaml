@@ -2,8 +2,10 @@
   content: Первая запись на стену, которую нужно выложить, чтобы проверить api
   description: Для проверки api
   social_network: vk
+  social_account_id: 1
 
 - name: Ещё одна запись на стену
   content: Вторая запись на стену, чтобы ещё раз убедиться в работе api
   description: Для проверки api
   social_network: vk
+  social_account_id: 1

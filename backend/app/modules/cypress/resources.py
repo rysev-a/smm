@@ -6,7 +6,7 @@ from app.modules.users.models import Role, User
 from app.modules.projects.models import Project
 from app.modules.tasks.models import Task
 from app.modules.comments.models import Comment
-from app.modules.posts.models import Post
+from app.modules.posts.models import Post, SocialAccount
 
 
 class CypressClear(Resource):
@@ -23,5 +23,6 @@ class CypressGenerate(Resource):
         generate_from_mock(mock='projects', model=Project, db=db)
         generate_from_mock(mock='tasks', model=Task, db=db)
         generate_from_mock(mock='comments', model=Comment, db=db)
+        generate_from_mock(mock='social-accounts', model=SocialAccount, db=db)
         generate_from_mock(mock='posts', model=Post, db=db)
         return {'message': 'ok'}
