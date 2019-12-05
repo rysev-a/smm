@@ -12,6 +12,10 @@
 /frontend/docs
 **/.DS_Store
 
+/client/node_modules
+/client/public
+/client/build
+
 /testing/node_modules
 /testing/cypress/videos
 /public

@@ -2,6 +2,7 @@ const {
   FuseBox,
   WebIndexPlugin,
   CSSPlugin,
+  SassPlugin,
   CSSResourcePlugin,
   ImageBase64Plugin,
   QuantumPlugin,
@@ -24,6 +25,7 @@ const fuse = FuseBox.init({
       CSSResourcePlugin({
         dist: './build/css-resources',
       }),
+      SassPlugin(),
       CSSPlugin(),
     ],
     ImageBase64Plugin(),

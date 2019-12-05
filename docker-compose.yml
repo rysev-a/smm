@@ -13,10 +13,10 @@ services:
   reactapp:
     image: node:slim
     volumes:
-      - ./frontend:/frontend
-      - ./public/:/frontend/build
+      - ./client:/client
+      - ./public/:/client/build
     command: bash -c "
-      cd frontend;
+      cd client;
       yarn install;
       yarn build;"
 

@@ -1,0 +1,88 @@
+@import '../colors.sass'
+
+.sign-form
+  margin-top: 100px
+
+  &__title
+    letter-spacing: 4px
+    margin: 80px 0 0 0
+    font-family: 'montserratblack'
+    font-size: 42px
+    text-align: center
+    color: #71767D
+
+  .label
+    color: $grey
+    font-family: 'montserratblack'
+    font-size: 22px
+    margin-bottom: 10px
+    position: relative
+
+  .control
+    display: flex
+
+  .input
+    width: 100%
+    font-size: 18px
+    border: 2px solid transparent
+    box-sizing: content-box
+    flex: 1
+
+  .input[type="password"]
+    font-family: 'montserratblack'
+  &__text
+    text-align: center
+    color: $grey
+    line-height: 30px
+
+  &__link
+    font-family: 'montserratblack'
+    text-decoration: underline
+    cursor: pointer
+    display: inline-block
+    color: $grey
+    padding: 0 5px
+
+  &__buttons
+    text-align: center
+    margin: 45px 0
+    .button
+      margin-right: 20px
+      width: 85%
+
+  .password-control
+    position: relative
+    .eyes
+      position: absolute
+      right: 20px
+      top: 20px
+
+    .eyes.look-back
+      transform: rotate(180deg)
+
+  .error
+    position: relative
+    .label
+      color: $red
+    .label-info
+      color: #71767D
+
+    input
+      border: 2px solid $red
+
+    .error-message
+      position: absolute
+      top: 110px
+      color: $red
+      font-size: 12px
+      font-family: 'montserratblack'
+      right: 0
+      font-family: 'montserratblack'
+      text-align: right
+
+  input
+    background: #fff
+    border: none
+    border-radius: 15px
+    padding: 20px
+    outline: none

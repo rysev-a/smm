@@ -1,0 +1,38 @@
+{
+  "name": "smm-client",
+  "version": "0.0.1",
+  "description": "SMM service frontend",
+  "main": "index.js",
+  "author": "Rysev Alexey",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "classcat": "3.1.1",
+    "copy-webpack-plugin": "^5.0.5",
+    "inferno": "^7.3.3",
+    "inferno-mobx": "^7.3.3",
+    "inferno-router": "^7.3.3",
+    "mobx": "^5.15.0",
+    "node-sass": "^4.13.0",
+    "normalize.css": "^8.0.1",
+    "sass-loader": "^8.0.0"
+  },
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "ts-transform-classcat": "^0.1.1",
+    "ts-transform-inferno": "^4.0.2",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "scripts": {
+    "start": "export NODE_ENV=development; ./node_modules/.bin/webpack-dev-server",
+    "build": "export NODE_ENV=production; ./node_modules/.bin/webpack"
+  }
+}
