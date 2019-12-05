@@ -11,7 +11,7 @@ services:
       - db_nw
 
   reactapp:
-    image: node:slim
+    image: node:10-slim
     volumes:
       - ./client:/client
       - ./public/:/client/build
