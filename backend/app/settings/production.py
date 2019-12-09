@@ -19,4 +19,6 @@ MODULES = [
     'tasks',
     'comments',
     'cypress',
+    'posts',
+    'logging',
 ]
