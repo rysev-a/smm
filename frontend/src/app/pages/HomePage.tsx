@@ -1,9 +1,10 @@
 import TempPage from 'app/ui/TempPage';
 import Greeting from 'app/modules/greeting';
+import Panel from 'app/modules/panel';
 
 const HomePage = () => (
-  <TempPage title="Главная страница" description="">
-    <Greeting />
+  <TempPage title="Главная панель" description="">
+    <Panel />
   </TempPage>
 );
 

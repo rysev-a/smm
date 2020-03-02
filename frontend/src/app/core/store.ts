@@ -26,6 +26,9 @@ import SocialAccountDetailModel from 'app/modules/social-accounts/social-account
 import SocialAccountCreateForm from 'app/modules/social-accounts/social-account-create/SocialAccountCreateForm';
 import SocialAccountEditForm from 'app/modules/social-accounts/social-account-edit/SocialAccountEditForm';
 
+// main panel
+import PanelModel from 'app/modules/panel/PanelModel';
+
 class ApplicationStore {
   userDetailModel: UserDetailModel;
   projectDetailModel: ProjectDetailModel;
@@ -41,6 +44,7 @@ class ApplicationStore {
   socialAccountDetailModel: SocialAccountDetailModel;
   socialAccountCreateForm: SocialAccountCreateForm;
   socialAccountEditForm: SocialAccountEditForm;
+  panelModel: PanelModel;
 
   constructor() {
     this.userDetailModel = new UserDetailModel();
@@ -57,6 +61,7 @@ class ApplicationStore {
     this.socialAccountDetailModel = new SocialAccountDetailModel();
     this.socialAccountCreateForm = new SocialAccountCreateForm();
     this.socialAccountEditForm = new SocialAccountEditForm();
+    this.panelModel = new PanelModel();
   }
 }
 
