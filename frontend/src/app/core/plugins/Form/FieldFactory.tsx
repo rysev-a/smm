@@ -32,7 +32,7 @@ const InputControl = observer(({ field, type = 'text', model }) => (
   </div>
 ));
 
-const TextAreaControl = observer(({ field, model }) => (
+export const TextAreaControl = observer(({ field, model }) => (
   <div className={classNames('control', controlClassName)}>
     <textarea
       className={classNames('textarea', {

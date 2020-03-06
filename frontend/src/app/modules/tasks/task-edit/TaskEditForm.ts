@@ -12,6 +12,7 @@ class TaskEditForm extends Form {
   assigneeOptions: AsyncList;
   projectOptions: AsyncList;
   taskId: number;
+  values: any;
 
   constructor() {
     super();
@@ -42,14 +43,13 @@ class TaskEditForm extends Form {
       .get(taskId)
       .then(({ data }) => {
         this.values = data;
-        this.values.deadline = moment(data.deadline).format(
-          'YYYY-MM-DDTHH:mm:ss'
-        );
+        this.values.deadline = data.deadline
+          ? moment(data.deadline).format('YYYY-MM-DDTHH:mm:ss')
+          : moment().format('YYYY-MM-DDTHH:mm:ss');
         this.processing = false;
       })
       .catch(() => {
         this.processing = false;
-        console.warn('load fail');
       });
   };
 
@@ -93,7 +93,6 @@ class TaskEditForm extends Form {
 
   onSuccessCallback = (_, response) => {
     const task = response.data.id;
-    history.push(`/tasks/${task}`);
   };
 
   serializeValues = values => {

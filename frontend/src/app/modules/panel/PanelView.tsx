@@ -2,7 +2,7 @@ import Processing from 'app/ui/Processing';
 import { Component } from 'inferno';
 import PanelProjects from './components/PanelProjects';
 import PanelTasks from './components/PanelTask';
-import PanelTaskDetail from './components/PanelTaskDetail';
+import PanelTaskForm from './components/PanelTaskForm';
 
 interface PanelViewProps {
   panelModel: any;
@@ -27,6 +27,7 @@ class PanelView extends Component<PanelViewProps> {
         tasks,
         setActiveTask,
         activeTaskId,
+        editTask,
       },
     } = this.props;
     return (
@@ -46,14 +47,11 @@ class PanelView extends Component<PanelViewProps> {
               tasks={tasks}
               activeTaskId={activeTaskId}
               setActiveTask={setActiveTask}
+              editTask={editTask}
             />
           </div>
           <div class="column is-6">
-            {tasks.length > 0 && Number(activeTaskId) > 0 && (
-              <PanelTaskDetail
-                taskDetail={tasks.find(task => task.id === activeTaskId)}
-              />
-            )}
+            {tasks.length > 0 && Number(activeTaskId) > 0 && <PanelTaskForm />}
           </div>
         </div>
       </div>
